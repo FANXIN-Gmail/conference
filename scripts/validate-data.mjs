@@ -28,7 +28,17 @@ for(const row of data.records){
 }
 for(const c of data.conferences){
   assert.match(c.color,/^#[0-9a-f]{6}$/i);
-  for(let y=data.window.start;y<=data.window.end;y++)assert(seen.has(`${c.id}-${y}`),`Missing ${c.id} ${y}`);
+  const eventYears=c.eventYears??Array.from({length:data.window.end-data.window.start+1},(_,i)=>data.window.start+i);
+  assert(eventYears.length>0&&new Set(eventYears).size===eventYears.length,`Invalid event years ${c.id}`);
+  for(const y of eventYears){
+    assert(Number.isInteger(y)&&y>=data.window.start&&y<=data.window.end,`Invalid event year ${c.id} ${y}`);
+    assert(seen.has(`${c.id}-${y}`),`Missing ${c.id} ${y}`);
+  }
+  for(const row of data.records.filter(r=>r.conference===c.id))assert(eventYears.includes(row.year),`Conference not held: ${c.id} ${row.year}`);
+  if(c.ranking){
+    assert.equal(c.ranking.rank,'A*');
+    assert.equal(new URL(c.ranking.url).hostname,'portal.core.edu.au');
+  }
 }
 const csvPath=path.join(root,'data/conferences.csv');
 const header=['conference','year','submissions','acceptance_rate_percent','scope','verified_at','sources'];

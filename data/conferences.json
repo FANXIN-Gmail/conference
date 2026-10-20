@@ -42,6 +42,55 @@
       "category": "ML",
       "color": "#cc547c",
       "name": "Conference on Neural Information Processing Systems"
+    },
+    {
+      "id": "WWW",
+      "category": "WEB",
+      "color": "#556572",
+      "name": "The ACM Web Conference"
+    },
+    {
+      "id": "CVPR",
+      "category": "CV",
+      "color": "#bd4d39",
+      "name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+      "ranking": {
+        "rank": "A*",
+        "edition": "ICORE2026",
+        "url": "https://portal.core.edu.au/conf-ranks/604/"
+      }
+    },
+    {
+      "id": "ICCV",
+      "category": "CV",
+      "color": "#328f9f",
+      "name": "IEEE/CVF International Conference on Computer Vision",
+      "eventYears": [
+        2021,
+        2023,
+        2025
+      ],
+      "ranking": {
+        "rank": "A*",
+        "edition": "ICORE2026",
+        "url": "https://portal.core.edu.au/conf-ranks/638/"
+      }
+    },
+    {
+      "id": "ECCV",
+      "category": "CV",
+      "color": "#7d8b38",
+      "name": "European Conference on Computer Vision",
+      "eventYears": [
+        2022,
+        2024,
+        2026
+      ],
+      "ranking": {
+        "rank": "A*",
+        "edition": "ICORE2026",
+        "url": "https://portal.core.edu.au/conf-ranks/479/"
+      }
     }
   ],
   "records": [
@@ -717,6 +766,355 @@
         }
       ],
       "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "WWW",
+      "year": 2021,
+      "accepted": 357,
+      "submissions": 1736,
+      "reportedRate": null,
+      "scope": "主研究轨；分母采用参会作者统计",
+      "note": "参会作者的 William & Mary 与 Notre Dame 高校主页一致记录 357 / 1736；未取得官方精确计数报告，desk reject 与撤稿处理未说明。中山大学同期参会报告记 355，不将 357 称为最终出版数量。",
+      "sources": [
+        {
+          "title": "William & Mary · 参会作者统计",
+          "url": "https://yhe15.people.wm.edu/publication.html",
+          "kind": "institution"
+        },
+        {
+          "title": "Notre Dame · 参会实验室统计",
+          "url": "https://sites.nd.edu/xiangliang-zhang/pub-year/",
+          "kind": "institution"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "采用参会作者统计；分母处理未说明，其他同期报道有不同录取快照。"
+    },
+    {
+      "conference": "WWW",
+      "year": 2022,
+      "accepted": 323,
+      "submissions": 1822,
+      "reportedRate": 17.7,
+      "scope": "主研究轨；有效投稿，不含 Special Track",
+      "note": "上海科技大学参会团队记有效投稿 1822、录取 323；官方 Newsletter #6 确认主研究轨总计 323 与 17.7%。Special Track 41 另列。Newsletter 分主题明细与明确总计有差异，采用总计并用高校公告交叉核实。",
+      "sources": [
+        {
+          "title": "上海科技大学 · 参会报告",
+          "url": "https://www.shanghaitech.edu.cn/2022/0523/c1006a572249/page.htm",
+          "kind": "institution"
+        },
+        {
+          "title": "官方 Newsletter #6",
+          "url": "https://archives.iw3c2.org/www2022/newsletter-06/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "WWW",
+      "year": 2023,
+      "accepted": 365,
+      "submissions": 1900,
+      "reportedRate": null,
+      "scope": "Regular Paper 主研究轨",
+      "note": "天津大学 2023-05-08 参会团队公告明确 1900 投稿、365 篇 Regular Paper 录取。未说明 desk reject 与撤稿处理方式，采用其统计分母，不纳入其他独立轨道。",
+      "sources": [
+        {
+          "title": "天津大学 · 参会团队公告",
+          "url": "https://cic.tju.edu.cn/info/1040/4376.htm",
+          "kind": "institution"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "WWW",
+      "year": 2024,
+      "accepted": 405,
+      "submissions": 2008,
+      "reportedRate": 20.2,
+      "scope": "十个主研究主题轨；有效投稿",
+      "note": "官方 Newsletter #5 明确十个主研究主题轨合计 2008 有效投稿、405 录取。Industry 52 与 Web4Good 23 另列，不与研究轨合并。",
+      "sources": [
+        {
+          "title": "官方 Newsletter #5",
+          "url": "https://www2024.thewebconf.org/about/newsletters/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "WWW",
+      "year": 2025,
+      "accepted": 409,
+      "submissions": 2062,
+      "reportedRate": null,
+      "scope": "主研究轨；剔除 desk reject 后送审论文",
+      "note": "官方论文集主席序言第 3 与第 5 页：原始完整投稿 2500，剔除 desk reject 后送审 2062，录取 409。155 篇 oral 为录取子集，4 篇受邀 TWEB 论文另列。程序主席个人总结原始投稿为 2496，采用正式序言送审分母。",
+      "sources": [
+        {
+          "title": "官方论文集 · 主席序言",
+          "url": "https://archives.iw3c2.org/www2025/www2025-proceedings.pdf#page=5",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "分母为送审数；主席序言另列原始完整投稿 2,500。"
+    },
+    {
+      "conference": "WWW",
+      "year": 2026,
+      "accepted": 676,
+      "submissions": 3370,
+      "reportedRate": 20.1,
+      "scope": "主研究轨；完整投稿，包含 desk reject",
+      "note": "原始论文集程序主席序言第 5 页（HSE 大学存档）明确 4213 摘要、3370 完整投稿、desk reject 后 3112 送审、676 录取，原报 20.1%。320 篇 oral 是 676 子集，4 篇受邀 TWEB 另列。3370 包含 desk reject，与 2025 送审分母不同。",
+      "sources": [
+        {
+          "title": "程序主席序言 · 高校存档",
+          "url": "https://publications.hse.ru/pubs/share/direct/1152301113.pdf#page=5",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "完整投稿 3,370；其中 3,112 篇送审。"
+    },
+    {
+      "conference": "CVPR",
+      "year": 2021,
+      "accepted": 1661,
+      "submissions": 7093,
+      "reportedRate": 23.6,
+      "scope": "主会议；参会作者资料统计",
+      "note": "UC Merced 参会作者 Miguel Á. Carreira-Perpiñán 简历明确列 1661 / 7093，但印出的 23.6% 与整数不符；页面统一按数量计算为 23.42%。另有 7039 有效送审分母与早期其他快照，不能混用。官方 IEEE 主席前言全文未能直接读取，因此不标官方全文核实。",
+      "sources": [
+        {
+          "title": "UC Merced · 参会作者统计",
+          "url": "https://faculty.ucmerced.edu/mcarreira-perpinan/cv.pdf",
+          "kind": "institution"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "采用高校参会作者统计；百分比按整数计算，与资料原报率略有差异。"
+    },
+    {
+      "conference": "CVPR",
+      "year": 2022,
+      "accepted": 2064,
+      "submissions": 8161,
+      "reportedRate": 25.3,
+      "scope": "主会议；官方开幕统计",
+      "note": "官方主席开幕报告第 8 页 CVPR 2022 in Numbers 列 8161 投稿与 2064 录取；第 19 页再次明确 2064、25.3%。早期推荐录取 2067 与节目册 2063 属于其他快照，不混用。",
+      "sources": [
+        {
+          "title": "官方主席开幕报告 · 第 8 页",
+          "url": "https://cvpr2022.thecvf.com/sites/default/files/CVPR2022-ChairsOpeningMessages.pdf#page=8",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "CVPR",
+      "year": 2023,
+      "accepted": 2359,
+      "submissions": 9155,
+      "reportedRate": 25.8,
+      "scope": "主会议；官方统计页",
+      "note": "官方 CVPR 2023 Statistics 明确 9155 投稿、2359 录取、25.8%。采用官方会议统计而非部分汇总网站的 2360；oral 与 highlight 等展示形式属于录取子集。",
+      "sources": [
+        {
+          "title": "官方 CVPR 2023 Statistics",
+          "url": "https://cvpr2023.thecvf.com/Conferences/2023/AcceptedPapers",
+          "kind": "official"
+        },
+        {
+          "title": "程序主席官方统计回顾",
+          "url": "https://cvpr.thecvf.com/Conferences/2023/BlogPaperSubmissions",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "CVPR",
+      "year": 2024,
+      "accepted": 2719,
+      "submissions": 11532,
+      "reportedRate": 23.6,
+      "scope": "主会议研究论文",
+      "note": "官方 2024-06-26 闭幕新闻稿明确 11532 投稿、2719 录取、23.6%。采用主会研究论文统计，不纳入 Workshop；oral 为已录取论文的子集，不重复累加。",
+      "sources": [
+        {
+          "title": "官方闭幕新闻稿",
+          "url": "https://cvpr.thecvf.com/Conferences/2024/News/Wrap_Release",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "CVPR",
+      "year": 2025,
+      "accepted": 2878,
+      "submissions": 13008,
+      "reportedRate": 22.1,
+      "scope": "主会议；有效投稿",
+      "note": "官方节目册第 3 页大会及程序主席致辞明确主会 13008 有效投稿、2878 录取、22.1%。虽然 PDF 名称为 Workshops / Tutorials，其主席致辞统计的是主会议。96 oral 与 387 highlights 均为 2878 内部子集。",
+      "sources": [
+        {
+          "title": "官方大会及程序主席致辞 · 第 3 页",
+          "url": "https://media.eventhosts.cc/Conferences/CVPR2025/CVPR_Workshops_Tutorials_2025.pdf#page=3",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "CVPR",
+      "year": 2026,
+      "accepted": 4089,
+      "submissions": 16092,
+      "reportedRate": 25.4,
+      "scope": "主会议；有效投稿，不含 Findings 与 Workshop",
+      "note": "官方 2026-06-22 闭幕新闻稿明确 16092 投稿、4089 篇录取论文展示，主席致辞亦记 4089 / 16092、25.4%。采用最终官方快照而非早期 4090。141 oral 与 578 highlights 是内部子集；Findings workshop 不计入主会。",
+      "sources": [
+        {
+          "title": "官方闭幕新闻稿",
+          "url": "https://cvpr.thecvf.com/Conferences/2026/News/Closing",
+          "kind": "official"
+        },
+        {
+          "title": "官方大会及程序主席致辞",
+          "url": "https://media.eventhosts.cc/Conferences/CVPR2026/CVPR_workshops_tutorials_2026_14.pdf#page=3",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "ICCV",
+      "year": 2021,
+      "accepted": 1612,
+      "submissions": 6152,
+      "reportedRate": 26.2,
+      "scope": "主会议；官方后续回顾统计",
+      "note": "ECCV 2024 官方开幕幻灯片第 23 页历史图记录 ICCV 2021 为 6152 投稿、1612 录取。同期录取通知阶段的中国人民大学报道为 1617 / 6236，属于另一统计快照；不混合分子分母。",
+      "sources": [
+        {
+          "title": "官方历史统计 · ECCV 2024 开幕报告",
+          "url": "https://eccv2024.ecva.net/media/eccv-2024/Slides/2822.pdf#page=23",
+          "kind": "official"
+        },
+        {
+          "title": "中国人民大学 · 同期录取快照",
+          "url": "https://ai.ruc.edu.cn/xwgg/xyxw/5e218b1c59d743e1b09e5e32c01f5d06.htm",
+          "kind": "institution"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "采用官方后续回顾快照；与录取通知阶段统计不同。"
+    },
+    {
+      "conference": "ICCV",
+      "year": 2023,
+      "accepted": 2160,
+      "submissions": 8260,
+      "reportedRate": 26.15,
+      "scope": "主会议；完整投稿",
+      "note": "官方 Program Overview 列 8260 投稿、其中 8088 分配评审、2160 录取，并报 26.15%。采用与官方录取率一致的总投稿分母 8260。开幕报告及后续回顾另有 2161，采用 Program Overview 统计快照。",
+      "sources": [
+        {
+          "title": "官方 Program Overview",
+          "url": "https://iccv2023.thecvf.com/program.overview-97.php",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "完整投稿 8,260；其中 8,088 篇分配评审。"
+    },
+    {
+      "conference": "ICCV",
+      "year": 2025,
+      "accepted": 2701,
+      "submissions": 11239,
+      "reportedRate": 24.0,
+      "scope": "主会议；有效投稿",
+      "note": "官方主会议 Program Guide 第 3 页主席致辞记 11239 有效投稿与 2701 录取，原报 24%。部分汇总网站为 2698，采用官方主席致辞，不推断差异原因。",
+      "sources": [
+        {
+          "title": "官方 Program Guide · 主席致辞",
+          "url": "https://media.eventhosts.cc/Conferences/ICCV2025/iccv25_main_program.pdf#page=3",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "ECCV",
+      "year": 2022,
+      "accepted": 1645,
+      "submissions": 5804,
+      "reportedRate": null,
+      "scope": "主会议；排除 desk reject 和撤稿后的有效投稿",
+      "note": "官方 Program Guide 主席致辞记初始投稿 6773，desk reject 846，后续撤稿后有效投稿 5804，录取 1645（包含 157 oral）。Springer 出版社独立确认 1645 / 5804。ECCV 2024 历史图的 1488 仅为非 oral 子集，不是总录取数。",
+      "sources": [
+        {
+          "title": "官方 Program Guide · 主席致辞",
+          "url": "https://eccv2022.ecva.net/files/2021/12/ECCV_2022_MainConference_ProgramGuide_Final_full.pdf",
+          "kind": "official"
+        },
+        {
+          "title": "Springer · 正式论文集",
+          "url": "https://link.springer.com/book/10.1007/978-3-031-19809-0?page=2",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "有效投稿 5,804；原始投稿 6,773。"
+    },
+    {
+      "conference": "ECCV",
+      "year": 2024,
+      "accepted": 2387,
+      "submissions": 8585,
+      "reportedRate": 27.9,
+      "scope": "主会议；有效投稿",
+      "note": "官方开幕幻灯片第 22 页 Papers 列 8585 有效投稿与 2387 录取，写 27.9%；同文件第 23 页历史图为 27.8%。页面统一按整数计算，得到 27.80%，不直接照抄相矛盾的百分比。",
+      "sources": [
+        {
+          "title": "官方开幕报告 · Papers",
+          "url": "https://eccv2024.ecva.net/media/eccv-2024/Slides/2822.pdf#page=22",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "ECCV",
+      "year": 2026,
+      "accepted": 2834,
+      "submissions": 10473,
+      "reportedRate": null,
+      "scope": "主会议；出版社正式论文集统计",
+      "note": "Springer 2026 年 9 月正式论文集 About this book 明确从 10473 投稿中选出 2834 篇。NTT 2026-09-11 等初期参会报道为 2883 / 10473；采用官方出版社最终论文集统计，不推断相差 49 篇的原因。",
+      "sources": [
+        {
+          "title": "Springer · 正式论文集",
+          "url": "https://link.springer.com/book/10.1007/978-3-032-37627-5",
+          "kind": "official"
+        },
+        {
+          "title": "NTT · 较早录取快照",
+          "url": "https://www.group.ntt/jp/topics/2026/09/11/eccv2026.html",
+          "kind": "institution"
+        }
+      ],
+      "verifiedAt": "2026-10-20",
+      "displayNote": "采用正式论文集快照；与早期录取公告数量不同。"
     }
   ]
 }

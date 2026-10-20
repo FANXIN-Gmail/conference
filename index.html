@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS 2021–2026 年录取率与投稿数量。">
+<meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS、WWW、CVPR、ICCV、ECCV 2021–2026 年录取率与投稿数量。">
 <title>conference</title>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./styles.css">
-<script src="./app.js?v=submissions-20261020" type="module"></script>
+<script src="./app.js?v=www-cv-20261020" type="module"></script>
 </head>
 <body>
 <main class="wrap">
@@ -19,9 +19,10 @@
 <section class="chart-panel" aria-labelledby="rate-title"><div class="chart-heading"><h2 id="rate-title">录取率</h2><span>单位：%</span></div><div id="rate-chart" class="chart-container"></div></section>
 <section class="chart-panel" aria-labelledby="count-title"><div class="chart-heading"><h2 id="count-title">投稿数量</h2><span>单位：篇</span></div><div id="count-chart" class="chart-container"></div></section>
 </div>
-<p class="note">点击会议可筛选，悬停或点击数据点可查看数值。投稿数量按各届来源口径，部分为有效投稿、送审数或 ARR 投稿池。</p>
+<p class="note">点击会议可筛选，悬停或点击数据点可查看数值。ICCV 单数年、ECCV 双数年举办。投稿数量按各届来源口径，部分为有效投稿、送审数或 ARR 投稿池。</p>
 <details class="sources">
 <summary>数据与来源</summary>
+<p class="note">CV 会议 CORE A* 评级（ICORE 2026）：<a href="https://portal.core.edu.au/conf-ranks/604/" target="_blank" rel="noopener noreferrer">CVPR ↗</a>、<a href="https://portal.core.edu.au/conf-ranks/638/" target="_blank" rel="noopener noreferrer">ICCV ↗</a>、<a href="https://portal.core.edu.au/conf-ranks/479/" target="_blank" rel="noopener noreferrer">ECCV ↗</a>。</p>
 <div class="table-toolbar"><label>会议 <select id="table-conference"><option value="all">全部</option></select></label><label>年份 <select id="table-year"><option value="all">全部</option></select></label><button id="download-csv" class="quiet-button" type="button">下载 CSV ↓</button><span id="table-count" aria-live="polite"></span></div>
 <div class="table-scroll" tabindex="0" role="region" aria-label="会议年度数据，可横向滚动"><table><caption class="sr-only">会议各年投稿数量、录取率与来源</caption><thead><tr><th scope="col">会议 / 年份</th><th scope="col" class="numeric">投稿数量</th><th scope="col" class="numeric">录取率</th><th scope="col">来源与口径</th></tr></thead><tbody id="data-table"></tbody></table></div>
 </details>

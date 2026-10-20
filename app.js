@@ -21,7 +21,7 @@ function renderChart(id, metric) {
   const isRate = metric === 'rate';
   const compact = innerWidth <= 740;
   const W = compact ? 340 : 560, H = compact ? 300 : 320;
-  const left = compact ? 38 : 43, right = compact ? 100 : 118, top = 20, bottom = 39;
+  const left = compact ? 38 : 43, right = compact ? 113 : 125, top = 20, bottom = 39;
   const plotW = W - left - right, plotH = H - top - bottom;
   const allValues = dataset.records.map(r => isRate ? rate(r) : r.submissions);
   const step = isRate ? 10 : (Math.max(...allValues) > 10000 ? 5000 : 1000);
@@ -44,7 +44,7 @@ function renderChart(id, metric) {
       parts.push(`<circle class="chart-point" cx="${x(r.year)}" cy="${y(isRate ? rate(r) : r.submissions)}" r="${r.year===focusYear ? 4.8 : 3.6}" fill="white" stroke="${c.color}" stroke-width="2" tabindex="0" role="button" aria-label="${label}" data-conference="${c.id}" data-year="${r.year}"><title>${label}</title></circle>`);
     });
     const last = rows.at(-1);
-    labels.push({c, row:last, actual:y(isRate ? rate(last) : last.submissions)});
+    if (last) labels.push({c, row:last, actualX:x(last.year), actual:y(isRate ? rate(last) : last.submissions)});
   });
   // Label spacing avoids collisions even when several conference rates are close.
   labels.sort((a,b)=>a.actual-b.actual);
@@ -53,7 +53,10 @@ function renderChart(id, metric) {
     labels.at(-1).labelY = H-bottom;
     for(let i=labels.length-2;i>=0;i--) labels[i].labelY=Math.min(labels[i].labelY,labels[i+1].labelY-19);
   }
-  labels.forEach(l=>parts.push(`<path d="M ${W-right+5} ${l.actual} L ${W-right+17} ${l.labelY} L ${W-right+21} ${l.labelY}" fill="none" stroke="${l.c.color}" stroke-width=".8" opacity=".6"/><text class="series-label" x="${W-right+25}" y="${l.labelY+3}" fill="${l.c.color}">${l.c.id} ${isRate ? percent(l.row) : number(l.row.submissions)}</text>`));
+  labels.forEach(l=>{
+    const label = `${l.c.id}${l.row.year < years.at(-1) ? ` ’${String(l.row.year).slice(-2)}` : ''}`;
+    parts.push(`<path d="M ${l.actualX+5} ${l.actual} L ${W-right+17} ${l.labelY} L ${W-right+21} ${l.labelY}" fill="none" stroke="${l.c.color}" stroke-width=".8" opacity=".6"/><text class="series-label" x="${W-right+25}" y="${l.labelY+3}" fill="${l.c.color}">${label} ${isRate ? percent(l.row) : number(l.row.submissions)}</text>`);
+  });
   if (!selected.size) parts.push(`<text x="${W/2}" y="${H/2}" text-anchor="middle" font-size="13" fill="#697787">请选择至少一个会议</text>`);
   parts.push('</svg>');
   $(id).innerHTML=parts.join('');

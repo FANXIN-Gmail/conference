@@ -2,24 +2,28 @@
 
 [查看网站 →](https://fanxin-gmail.github.io/conference/)
 
-AI 顶会数据观察：ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS，2021–2026 年录取率与投稿数量。
+AI 顶会数据观察：ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS、WWW、CVPR、ICCV、ECCV，2021–2026 年录取率与投稿数量。
+
+CV 领域纳入的三个会议均为 ICORE2026 A*：[CVPR](https://portal.core.edu.au/conf-ranks/604/)、[ICCV](https://portal.core.edu.au/conf-ranks/638/)、[ECCV](https://portal.core.edu.au/conf-ranks/479/)。
 
 ## 页面功能
 
 - 两张交互趋势图，逐年标记录取率与投稿论文数量，可独立显示 / 隐藏会议。
-- 数据与来源默认折叠；展开后可按会议与年份筛选 36 条原始记录，每条含来源、核验日期和统计范围。
+- 数据与来源默认折叠；展开后可按会议与年份筛选 54 条原始记录，每条含来源、核验日期和统计范围。
 - 下载 CSV（遵循表格当前筛选）；仓库同时提供完整 JSON。
 - 适配手机；数据点支持键盘 Tab / Enter / Space 操作。
 
 ## 统计方法
 
-保留 2021–2025 五年历史数据，并补入截至 2026-10-20 已公布的六个会议 2026 年录取结果。2026 年尚未全部举办，部分数字来自录取决定公告或参会机构报道，不代表最终出版篇数。
+保留 2021–2025 五年历史数据，并补入截至 2026-10-20 已公布的 2026 年数据。2026 年尚未全部举办，部分数字来自录取决定公告或参会机构报道，不代表最终出版篇数。
+
+ICCV 在 2021、2023、2025 年举办，ECCV 在 2022、2024、2026 年举办；其他年份没有数据点，不填零，也不补造年度记录。隔年举办的相邻两届用线连接；ICCV 最新点标注 `’25`，引线从实际 2025 年位置起画。[CVF 举办周期说明](https://www.thecvf.com/?page_id=529)。
 
 页面和 CSV 展示录取率与投稿数量，录取数量仅保留在原始 JSON 中用于计算。投稿数量采用各届来源公布的统计口径，部分为有效投稿、送审数或 ARR 投稿池，并非统一的初始创建投稿总量；完整口径保留在 JSON 中以便追溯。
 
 图表录取率统一按 `accepted / submissions * 100` 计算，页面显示一位小数，CSV 保留四位。`submissions` 是来源公布的**统计分母**，可能是完整投稿、有效投稿、送审论文、或 ARR 调整后的投稿池，不能假设全部为初始投稿。来源原报百分比另存为 `reportedRate`，原报率缺失为 `null`，不能以零代替。
 
-统计范围：ACL / EMNLP 主会长短论文，AAAI Main Technical Track，ICLR / ICML / NeurIPS 主研究轨。排除 Findings、独立 Position / Datasets & Benchmarks 轨、Workshop、Industry、Demo 和受邀期刊论文。Poster、Spotlight、Oral 是展示形式，存在包含关系，不重复累加。
+统计范围：ACL / EMNLP 主会长短论文，AAAI Main Technical Track，ICLR / ICML / NeurIPS / WWW 主研究轨，CVPR / ICCV / ECCV 主会议。排除 Findings、独立 Position / Datasets & Benchmarks / Special 轨、Workshop、Industry、Demo 和受邀期刊论文。Poster、Spotlight、Oral 是展示形式，存在包含关系，不重复累加。
 
 录取数使用来源公布的录取统计快照，可能与之后最终出版数不同。各届流程与分母定义有变化，录取率不适合直接作为难度或会议质量排名。
 
@@ -30,6 +34,13 @@ AI 顶会数据观察：ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS，2021–2026
 - **ICLR**：2021 主席录取公告为 860 / 2997；后来官方 fact sheet 的 total submissions 为 3014，不混用。2022 官方百分比存在轻微算术差异；页面按整数计算。2023–2025 采用官方 fact sheet / 新闻稿的数字。
 - **ICML 2024**：常见 2609 / 9473 **包含 Position Papers**。主席通知邮件明确给出 Position 75 / 286，因此本项目研究轨采用 `(2609−75) / (9473−286) = 2534 / 9187`。来源为研究者上传至 OpenReview 的主席邮件存档，页面标记“主席邮件存档”；部分访问可能要求验证。官方 fact sheet 只给粗略总量。其他早期 ICML 年份使用参会研究机构同期报告，2025 录取数与官方 fact sheet 交叉核验。
 - **NeurIPS 2022**：录取数取大会主席官方 highlights，分母取官方 2023 ethics review 对照表。2022 fact sheet 混合总量且有不一致数字，不用其 2905 作为主轨录取数。
+
+### WWW 与 CV 会议来源说明
+
+- **WWW**：2021–2023 采用参会高校或作者的同期统计，2022 另由官方 Newsletter 核对录取总量。2024 使用官方 Newsletter，2025–2026 使用程序主席序言。2021 的 357 与部分报道的 355 属于不同统计快照，不能称为最终出版数。2025 分母 2062 是剔除 desk reject 后送审数，序言原始完整投稿 2500；2026 分母 3370 是完整投稿，其中 3112 送审，两年口径不同。
+- **CVPR**：2022–2026 优先采用程序主席报告、官方接受论文页及会议声明；2021 的来源和百分比差异保留在逐行记录。采用 2022 官方报告的 2064 / 8161、2023 官方的 2359 / 9155、2026 主席致辞的 4089 / 16092，不直接照搬汇总站常见的略有差异计数。
+- **ICCV**：2021 采用后续官方回顾 1612 / 6152，与早期录取通知报道 1617 / 6236 不混用。2023 采用官方 Program Overview 的 2160 / 8260，分母为完整投稿；其中 8088 篇分配评审。2025 使用官方主席致辞 2701 / 11239。
+- **ECCV**：2022 使用官方主席致辞及出版社的 1645 / 5804，包含 157 oral；不能误用后续历史图中仅非 oral 的 1488。2024 官方数量为 2387 / 8585，按数量计算 27.80%，同一报告另报 27.9%。2026 采用 Springer 正式论文集 2834 / 10473，保留与初期报道 2883 的阶段差异，不推断差异原因。
 
 ### 2026 年来源说明
 
@@ -46,7 +57,7 @@ AI 顶会数据观察：ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS，2021–2026
 
 1. 修改 `data/conferences.json`。每条保留 `conference`、`year`、`accepted`、`submissions`、`reportedRate`、`scope`、`note`、`sources`、`verifiedAt`。
 2. 优先使用官方程序主席报告、统计表、新闻稿；需要机构报道或原始通知存档时，分别标记 `institution` 或 `archive`，并说明证据的限制。`official` 不能用于普通汇总站。
-3. 将核验日期更新到对应记录；同时更新顶层 `updatedAt`。新增会议时增加 `conferences` 元信息；新增完整年份时扩大 `window` 并补齐所有会议。
+3. 将核验日期更新到对应记录；同时更新顶层 `updatedAt`。新增会议时增加 `conferences` 元信息；隔年会议须提供 `eventYears`，仅列窗口内实际举办年份。扩大 `window` 时补齐年度会议与实际举办的隔年会议，不给未举办年份填零。
 4. 运行 `node scripts/validate-data.mjs --write-csv` 生成可独立下载的 CSV，再运行 `node scripts/validate-data.mjs` 验证。检查 `node --check app.js`。
 5. 提交并推送到 `main`。GitHub Pages 从 `main` 根目录自动发布，GitHub Actions 验证数据完整性、唯一性、来源字段及 CSV 一致性。
 
