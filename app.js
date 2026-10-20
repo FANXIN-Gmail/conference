@@ -8,7 +8,7 @@ const tooltip = $('tooltip');
 
 function hideTooltip() { tooltip.hidden = true; }
 function showTooltip(event, row) {
-  tooltip.innerHTML = `<strong>${escape(row.conference)} · ${row.year}</strong><em>${percent(row)}</em><br><span>录取 ${number(row.accepted)} 篇 / 统计分母 ${number(row.submissions)}</span>`;
+  tooltip.innerHTML = `<strong>${escape(row.conference)} · ${row.year}</strong><em>${percent(row)}</em><br><span>录取数量：${number(row.accepted)} 篇</span>`;
   tooltip.hidden = false;
   const rect = event.currentTarget.getBoundingClientRect();
   const x = event.clientX || rect.left + rect.width / 2;
@@ -21,7 +21,7 @@ function renderChart(id, metric) {
   const isRate = metric === 'rate';
   const compact = innerWidth <= 740;
   const W = compact ? 340 : 560, H = compact ? 300 : 320;
-  const left = compact ? 38 : 43, right = compact ? 66 : 83, top = 20, bottom = 39;
+  const left = compact ? 38 : 43, right = compact ? 100 : 118, top = 20, bottom = 39;
   const plotW = W - left - right, plotH = H - top - bottom;
   const allValues = dataset.records.map(r => isRate ? rate(r) : r.accepted);
   const step = isRate ? 10 : (Math.max(...allValues) > 10000 ? 2000 : 1000);
@@ -40,7 +40,7 @@ function renderChart(id, metric) {
     const points = rows.map(r => `${x(r.year)},${y(isRate ? rate(r) : r.accepted)}`).join(' ');
     parts.push(`<polyline points="${points}" fill="none" stroke="${c.color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`);
     rows.forEach(r => {
-      const label = `${r.conference} ${r.year}，录取率 ${percent(r)}，录取 ${number(r.accepted)} 篇，统计分母 ${number(r.submissions)}。按回车查看该年度。`;
+      const label = `${r.conference} ${r.year}，录取率 ${percent(r)}，录取 ${number(r.accepted)} 篇。按回车查看该年度。`;
       parts.push(`<circle class="chart-point" cx="${x(r.year)}" cy="${y(isRate ? rate(r) : r.accepted)}" r="${r.year===focusYear ? 4.8 : 3.6}" fill="white" stroke="${c.color}" stroke-width="2" tabindex="0" role="button" aria-label="${label}" data-conference="${c.id}" data-year="${r.year}"><title>${label}</title></circle>`);
     });
     const last = rows.at(-1);
@@ -53,7 +53,7 @@ function renderChart(id, metric) {
     labels.at(-1).labelY = H-bottom;
     for(let i=labels.length-2;i>=0;i--) labels[i].labelY=Math.min(labels[i].labelY,labels[i+1].labelY-19);
   }
-  labels.forEach(l=>parts.push(`<path d="M ${W-right+5} ${l.actual} L ${W-right+17} ${l.labelY} L ${W-right+21} ${l.labelY}" fill="none" stroke="${l.c.color}" stroke-width=".8" opacity=".6"/><text class="series-label" x="${W-right+25}" y="${l.labelY+3}" fill="${l.c.color}">${l.c.id}</text>`));
+  labels.forEach(l=>parts.push(`<path d="M ${W-right+5} ${l.actual} L ${W-right+17} ${l.labelY} L ${W-right+21} ${l.labelY}" fill="none" stroke="${l.c.color}" stroke-width=".8" opacity=".6"/><text class="series-label" x="${W-right+25}" y="${l.labelY+3}" fill="${l.c.color}">${l.c.id} ${isRate ? percent(l.row) : number(l.row.accepted)}</text>`));
   if (!selected.size) parts.push(`<text x="${W/2}" y="${H/2}" text-anchor="middle" font-size="13" fill="#697787">请选择至少一个会议</text>`);
   parts.push('</svg>');
   $(id).innerHTML=parts.join('');
@@ -88,12 +88,12 @@ function renderTable(){
     const c=dataset.conferences.find(c=>c.id===r.conference),s=r.sources[0];
     const links=r.sources.slice(1).map(s=>`<a class="supplemental" href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)} ↗</a>`).join('');
     const kindLabel={institution:'机构报道',archive:'主席邮件存档',official:'官方来源'}[s.kind];
-    return `<tr><td style="--series:${c.color}"><span class="dot"></span><strong>${c.id}</strong><span class="year">${r.year}</span></td><td class="numeric">${number(r.accepted)}</td><td class="numeric">${number(r.submissions)}</td><td class="numeric">${percent(r)}</td><td><span class="source-kind ${s.kind==='institution'?'institution':''}">${kindLabel}</span><a class="source-link" href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)} ↗</a><details class="row-notes"><summary>统计口径与备注</summary><p>${escape(r.note)}<br>官方 / 来源原报率：${r.reportedRate===null?'未单独报告':`${r.reportedRate}%`}；页面计算值：${rate(r).toFixed(2)}%。<br>核验日期：${r.verifiedAt}。</p>${links}</details></td></tr>`;
+    return `<tr><td style="--series:${c.color}"><span class="dot"></span><strong>${c.id}</strong><span class="year">${r.year}</span></td><td class="numeric">${number(r.accepted)}</td><td class="numeric">${percent(r)}</td><td><span class="source-kind ${s.kind==='institution'?'institution':''}">${kindLabel}</span><a class="source-link" href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)} ↗</a><details class="row-notes"><summary>统计口径与备注</summary><p>${escape(r.scope)}。${escape(r.displayNote??'')}<br>核验日期：${r.verifiedAt}。</p>${links}</details></td></tr>`;
   }).join('');
 }
 function downloadCSV(){
-  const header=['conference','year','accepted','submission_denominator','calculated_rate_percent','reported_rate_percent','scope','note','verified_at','sources'];
-  const rows=filteredRows().map(r=>[r.conference,r.year,r.accepted,r.submissions,rate(r).toFixed(4),r.reportedRate??'',r.scope,r.note,r.verifiedAt,r.sources.map(s=>s.url).join(' | ')]);
+  const header=['conference','year','accepted','acceptance_rate_percent','scope','verified_at','sources'];
+  const rows=filteredRows().map(r=>[r.conference,r.year,r.accepted,rate(r).toFixed(4),r.scope,r.verifiedAt,r.sources.map(s=>s.url).join(' | ')]);
   const csv='\uFEFF'+[header,...rows].map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
   const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');
   a.href=url;a.download='conference-statistics.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
@@ -105,6 +105,7 @@ async function init(){
     dataset=await response.json();
     years=[...new Set(dataset.records.map(r=>r.year))].sort((a,b)=>a-b);
     focusYear=years.at(-1);selected=new Set(dataset.conferences.map(c=>c.id));
+    $('year-range').textContent=`${years[0]}–${years.at(-1)}`;
     $('updated').textContent=`核验于 ${dataset.updatedAt.replaceAll('-','.')}`;
     $('table-conference').insertAdjacentHTML('beforeend',dataset.conferences.map(c=>`<option value="${c.id}">${c.id}</option>`).join(''));
     $('table-year').insertAdjacentHTML('beforeend',years.slice().reverse().map(y=>`<option value="${y}">${y}</option>`).join(''));

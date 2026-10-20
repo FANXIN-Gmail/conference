@@ -3,7 +3,7 @@
   "updatedAt": "2026-10-20",
   "window": {
     "start": 2021,
-    "end": 2025
+    "end": 2026
   },
   "rateMethod": "accepted / submissions * 100; submissions is the source-specific denominator, not necessarily all initial submissions.",
   "conferences": [
@@ -581,6 +581,139 @@
           "title": "程序主席官方审稿流程回顾",
           "url": "https://blog.neurips.cc/2025/09/30/reflections-on-the-2025-review-process-from-the-program-committee-chairs/",
           "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "ACL",
+      "year": 2026,
+      "accepted": 2296,
+      "submissions": 12148,
+      "reportedRate": 18.9,
+      "scope": "主会长短论文，不含 Findings",
+      "note": "官方主席序言统计：2296 主会录取，2163 Findings；分母 12148 为 October 2025 ARR 首选 ACL 的 1630 与 January 2026 ARR 的 10518 唯一投稿池之和，实际 committed 6564。序言讨论了 camera-ready 引用核验后超过100篇撤销录取，采用该正式序言快照，不混用早期通知2308或汇总站2297。",
+      "displayNote": "采用官方主席序言统计。",
+      "sources": [
+        {
+          "title": "程序主席序言 · PDF 第 7 页",
+          "url": "https://aclanthology.org/2026.acl-long.0.pdf#page=7",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "EMNLP",
+      "year": 2026,
+      "accepted": 2719,
+      "submissions": 17669,
+      "reportedRate": 15.4,
+      "scope": "主会长短论文，不含 Findings",
+      "note": "采用2026-08-21 KAIST与2026-09-16广东外语外贸大学公告一致的录取决定统计：2719主会、17669投稿、15.4%；Findings2533不计入。截至2026-10-20未取得会议官方精确总量统计，机构报道暂定，不能称最终出版篇数；后续 author roster 的2710为不同名单快照，暂不混用。",
+      "displayNote": "录取决定统计，机构报道核验；待会议正式统计复核。",
+      "sources": [
+        {
+          "title": "广东外语外贸大学参会报告",
+          "url": "https://sist.gdufs.edu.cn/info/1606/12632.htm",
+          "kind": "institution"
+        },
+        {
+          "title": "KAIST AMI Lab 录取公告",
+          "url": "https://ami.kaist.ac.kr/3c4fdae6-c854-8000-8995-c8b5de4ac4db",
+          "kind": "institution"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "AAAI",
+      "year": 2026,
+      "accepted": 4167,
+      "submissions": 23680,
+      "reportedRate": 17.6,
+      "scope": "Main Technical Track",
+      "note": "Paderborn / Heinz Nixdorf Institute于2026-01-19发布的参会报告明确列出 Main Technical Track 的23680进入第一阶段评审、4167录取。官方开幕幻灯片第44页仅给约17.5%，未陈述精确总量；此处采用机构报道录取快照并按整数计算17.6%，不混用特别赛道。",
+      "displayNote": "主技术轨录取决定统计，机构报道核验。",
+      "sources": [
+        {
+          "title": "Paderborn / HNI 参会报告",
+          "url": "https://www.hni.uni-paderborn.de/en/message/paper-praesentationen-unserer-fachgruppe-data-science-auf-der-aaai-2026-conference-in-singapur",
+          "kind": "institution"
+        },
+        {
+          "title": "AAAI 官方开幕报告",
+          "url": "https://aaai.org/wp-content/uploads/2026/01/AAAI-26-Opening-Ceremony.pdf#page=44",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "ICLR",
+      "year": 2026,
+      "accepted": 5355,
+      "submissions": 19525,
+      "reportedRate": 27.4,
+      "scope": "Main Research Track",
+      "note": "程序主席2026-03-31官方回顾：19525有效且格式合规投稿，779 desk reject、5042撤稿，13763获最终accept/reject决定，其中5355录取。官方27.4%的分母为19525，不用13763。后续官方 Fact Sheet列5357，为不同快照；保留主席回顾的录取决定统计。",
+      "displayNote": "采用程序主席审稿流程回顾中的录取决定统计。",
+      "sources": [
+        {
+          "title": "ICLR 程序主席官方回顾",
+          "url": "https://blog.iclr.cc/2026/03/31/a-retrospective-on-the-iclr-2026-review-process/",
+          "kind": "official"
+        },
+        {
+          "title": "ICLR 官方 Fact Sheet（不同快照）",
+          "url": "https://media.iclr.cc/Conferences/ICLR2026/ICLR2026_Fact_Sheet.pdf",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "ICML",
+      "year": 2026,
+      "accepted": 6352,
+      "submissions": 23918,
+      "reportedRate": 26.6,
+      "scope": "Main Research Track",
+      "note": "采用官方录取通知公告统计：23918研究论文进入评审，6352录取。公告另列Position轨742/215，未并入本行。后续官方Fact Sheet报告24661投稿、6552录取，亦标为Main conference track，与录取公告存在差异且原因未明确，不推断其为跨轨道合计；保留录取通知快照，不混用。",
+      "displayNote": "采用官方录取通知统计；后续统计快照存在差异，详见仓库说明。",
+      "sources": [
+        {
+          "title": "ICML 官方录取结果公告",
+          "url": "https://www.linkedin.com/posts/icmlconf_decision-notifications-are-being-released-activity-7455685189479055361-PXq3",
+          "kind": "official"
+        },
+        {
+          "title": "ICML 官方 Fact Sheet（不同快照）",
+          "url": "https://media.icml.cc/Conferences/ICML2026/ICML2026_Fact_Sheet.pdf",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-20"
+    },
+    {
+      "conference": "NeurIPS",
+      "year": 2026,
+      "accepted": 7900,
+      "submissions": 30709,
+      "reportedRate": 25.7,
+      "scope": "Main Research Track",
+      "note": "2026-09-25 KAIST AMI Lab公告与2026-09-28维也纳大学参会报道一致：主轨30709有效/分配评审论文、7900推荐录取，25.7%。截至2026-10-20录取结果已公布但尚未取得组织方精确总量统计，标记参会机构报道核验，后续正式统计复核。不含Position、Evaluations & Datasets、Journal与Workshop轨。",
+      "displayNote": "录取结果已公布，机构报道核验；待组织方正式统计复核。",
+      "sources": [
+        {
+          "title": "维也纳大学参会研究组报告",
+          "url": "https://dm.cs.univie.ac.at/news/story/four-papers-accepted-at-neurips-2026",
+          "kind": "institution"
+        },
+        {
+          "title": "KAIST AMI Lab 录取公告",
+          "url": "https://ami.kaist.ac.kr/3e7fdae6-c854-8074-8166-de836a449a90",
+          "kind": "institution"
         }
       ],
       "verifiedAt": "2026-10-20"

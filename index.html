@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS 2021–2025 年录取率与录取数量。">
+<meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS 2021–2026 年录取率与录取数量。">
 <title>conference</title>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="./styles.css">
@@ -11,7 +11,7 @@
 </head>
 <body>
 <main class="wrap">
-<header><div><h1>AI 顶会统计<span class="orange">.</span></h1><p>2021–2025 · 主会 / 主研究轨</p></div><a href="https://github.com/FANXIN-Gmail/conference" target="_blank" rel="noopener noreferrer">GitHub ↗</a></header>
+<header><div><h1>AI 顶会统计<span class="orange">.</span></h1><p><span id="year-range">2021–2026</span> · 主会 / 主研究轨</p></div><a href="https://github.com/FANXIN-Gmail/conference" target="_blank" rel="noopener noreferrer">GitHub ↗</a></header>
 <p id="loading" role="status">正在载入数据…</p>
 <div id="dashboard" hidden>
 <div class="controls"><div id="filters" class="conference-filters" role="group" aria-label="选择显示的会议"></div><button id="reset" class="quiet-button" type="button">全部</button></div>
@@ -19,11 +19,11 @@
 <section class="chart-panel" aria-labelledby="rate-title"><div class="chart-heading"><h2 id="rate-title">录取率</h2><span>单位：%</span></div><div id="rate-chart" class="chart-container"></div></section>
 <section class="chart-panel" aria-labelledby="count-title"><div class="chart-heading"><h2 id="count-title">录取数量</h2><span>单位：篇</span></div><div id="count-chart" class="chart-container"></div></section>
 </div>
-<p class="note">点击会议可筛选，悬停或点击数据点可查看数值。录取率按各年公开统计分母计算，不含 Findings 等独立分轨。</p>
+<p class="note">点击会议可筛选，悬停或点击数据点可查看数值。不含 Findings 等独立分轨。</p>
 <details class="sources">
 <summary>数据与来源</summary>
 <div class="table-toolbar"><label>会议 <select id="table-conference"><option value="all">全部</option></select></label><label>年份 <select id="table-year"><option value="all">全部</option></select></label><button id="download-csv" class="quiet-button" type="button">下载 CSV ↓</button><span id="table-count" aria-live="polite"></span></div>
-<div class="table-scroll" tabindex="0" role="region" aria-label="会议年度数据，可横向滚动"><table><caption class="sr-only">会议各年录取数、统计分母、录取率与来源</caption><thead><tr><th scope="col">会议 / 年份</th><th scope="col" class="numeric">录取数</th><th scope="col" class="numeric">统计分母</th><th scope="col" class="numeric">录取率</th><th scope="col">来源与口径</th></tr></thead><tbody id="data-table"></tbody></table></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="会议年度数据，可横向滚动"><table><caption class="sr-only">会议各年录取数量、录取率与来源</caption><thead><tr><th scope="col">会议 / 年份</th><th scope="col" class="numeric">录取数量</th><th scope="col" class="numeric">录取率</th><th scope="col">来源与口径</th></tr></thead><tbody id="data-table"></tbody></table></div>
 </details>
 </div>
 <noscript><p>请启用 JavaScript 查看图表，或下载 <a href="./data/conferences.csv">CSV 数据</a>。</p></noscript>

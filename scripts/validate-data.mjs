@@ -31,8 +31,8 @@ for(const c of data.conferences){
   for(let y=data.window.start;y<=data.window.end;y++)assert(seen.has(`${c.id}-${y}`),`Missing ${c.id} ${y}`);
 }
 const csvPath=path.join(root,'data/conferences.csv');
-const header=['conference','year','accepted','submission_denominator','calculated_rate_percent','reported_rate_percent','scope','note','verified_at','sources'];
-const rows=data.records.map(r=>[r.conference,r.year,r.accepted,r.submissions,(100*r.accepted/r.submissions).toFixed(4),r.reportedRate??'',r.scope,r.note,r.verifiedAt,r.sources.map(s=>s.url).join(' | ')]);
+const header=['conference','year','accepted','acceptance_rate_percent','scope','verified_at','sources'];
+const rows=data.records.map(r=>[r.conference,r.year,r.accepted,(100*r.accepted/r.submissions).toFixed(4),r.scope,r.verifiedAt,r.sources.map(s=>s.url).join(' | ')]);
 const csv='\uFEFF'+[header,...rows].map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n')+'\n';
 if(process.argv.includes('--write-csv'))writeFileSync(csvPath,csv);
 else assert(existsSync(csvPath)&&readFileSync(csvPath,'utf8')===csv,'CSV is stale. Run: node scripts/validate-data.mjs --write-csv');
