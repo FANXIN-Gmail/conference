@@ -79,21 +79,7 @@ function renderFilters() {
   }));
 }
 function renderCharts(){hideTooltip();renderChart('rate-chart','rate');renderChart('count-chart','accepted');}
-function selectYear(year){
-  focusYear=year;
-  $('year-picker').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',Number(b.dataset.year)===year));
-  renderCards();renderCharts();
-}
-function renderCards(){
-  $('annual-cards').innerHTML=dataset.conferences.map(c=>{
-    const rows=dataset.records.filter(r=>r.conference===c.id).sort((a,b)=>a.year-b.year);
-    const row=rows.find(r=>r.year===focusYear);
-    if(!row)return '';
-    const base=rows[0],change=100*(row.accepted/base.accepted-1),max=Math.max(...rows.map(r=>r.accepted));
-    const bars=rows.map(r=>`<i style="height:${Math.max(3,r.accepted/max*24)}px;opacity:${r.year===focusYear?1:.5}"></i>`).join('');
-    return `<article class="annual-card" style="--series:${c.color}"><div class="card-top"><h3><span class="dot"></span>${c.id}</h3><span>${row.year} / ${escape(c.category)}</span></div><div class="card-stats"><div><div class="card-rate">${rate(row).toFixed(1)}<span>%</span></div><div class="card-label">录取率</div></div><div><div class="card-accepted">${number(row.accepted)}</div><div class="card-label">录取论文 / 篇</div></div></div><p class="card-change">${row.year===base.year?'五年观察的起点':`录取数较 ${base.year} 年 <strong>${change>=0?'+':''}${change.toFixed(0)}%</strong>`}</p><div class="mini-bars" aria-hidden="true">${bars}</div></article>`;
-  }).join('');
-}
+function selectYear(year){focusYear=year;renderCharts();}
 function filteredRows(){return dataset.records.filter(r=>($('table-conference').value==='all'||r.conference===$('table-conference').value)&&($('table-year').value==='all'||r.year===Number($('table-year').value))).sort((a,b)=>b.year-a.year||dataset.conferences.findIndex(c=>c.id===a.conference)-dataset.conferences.findIndex(c=>c.id===b.conference));}
 function renderTable(){
   const rows=filteredRows();
@@ -119,10 +105,7 @@ async function init(){
     dataset=await response.json();
     years=[...new Set(dataset.records.map(r=>r.year))].sort((a,b)=>a-b);
     focusYear=years.at(-1);selected=new Set(dataset.conferences.map(c=>c.id));
-    $('conference-total').textContent=dataset.conferences.length;$('year-total').textContent=years.length;$('record-total').textContent=dataset.records.length;
     $('updated').textContent=`核验于 ${dataset.updatedAt.replaceAll('-','.')}`;
-    $('year-picker').innerHTML=years.map(y=>`<button type="button" class="year-button" data-year="${y}" aria-pressed="${y===focusYear}">${y}</button>`).join('');
-    $('year-picker').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>selectYear(Number(b.dataset.year))));
     $('table-conference').insertAdjacentHTML('beforeend',dataset.conferences.map(c=>`<option value="${c.id}">${c.id}</option>`).join(''));
     $('table-year').insertAdjacentHTML('beforeend',years.slice().reverse().map(y=>`<option value="${y}">${y}</option>`).join(''));
     $('table-conference').addEventListener('change',renderTable);$('table-year').addEventListener('change',renderTable);
@@ -131,7 +114,7 @@ async function init(){
     document.addEventListener('keydown',event=>{if(event.key==='Escape')hideTooltip();});
     window.addEventListener('scroll',hideTooltip,{passive:true});
     window.addEventListener('resize',()=>requestAnimationFrame(renderCharts));
-    renderFilters();renderCharts();renderCards();renderTable();
+    renderFilters();renderCharts();renderTable();
     $('loading').hidden=true;$('dashboard').hidden=false;
   }catch(error){$('loading').innerHTML='数据暂时无法载入。请刷新页面，或前往 <a href="https://github.com/FANXIN-Gmail/conference/tree/main/data">GitHub 查看原始数据 ↗</a>。';console.error(error);}
 }

@@ -1,48 +1,34 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS 2021–2025 年录取率与录取数量，可交互比较并追溯统计来源。">
-  <meta name="theme-color" content="#f7f8fa">
-  <title>Conference · AI 顶会数据观察</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" type="module"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS 2021–2025 年录取率与录取数量。">
+<title>Conference · AI 顶会统计</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./styles.css">
+<script src="./app.js" type="module"></script>
 </head>
 <body>
-  <a class="skip" href="#trends">跳到数据图表</a>
-  <header class="site-header wrap">
-    <a class="brand" href="./" aria-label="Conference 首页"><span class="brand-mark" aria-hidden="true">c<span>↗</span></span><strong>conference<span class="orange">.</span></strong><span class="brand-caption">AI RESEARCH OBSERVATORY</span></a>
-    <nav aria-label="主导航"><a href="#trends">趋势</a><a href="#annual">年度对比</a><a href="#sources">数据与来源</a><a class="repo-link" href="https://github.com/FANXIN-Gmail/conference" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
-  </header>
-  <main class="wrap">
-    <section class="hero" aria-labelledby="page-title">
-      <div><p class="eyebrow"><span class="live-dot"></span> 六个会议，一份可追溯的数据集</p><h1 id="page-title">看见 AI 顶会的<br><span>五年变化。</span></h1><p class="intro">从录取率到论文规模，观察人工智能研究的增长轨迹。<br>逐年对比，回到来源，让数字有据可查。</p><a class="text-link" href="#trends">开始探索 <span aria-hidden="true">↓</span></a></div>
-      <aside class="edition"><span class="edition-label">THE FIVE-YEAR VIEW</span><div class="edition-years">2021<span>—</span>2025</div><p>统一观察窗口 · 主会 / 主研究轨</p><div class="edition-bottom"><span>01 / INITIAL RELEASE</span><span id="updated">核验于 2026.10.20</span></div></aside>
-    </section>
-    <div class="summary-strip" aria-label="数据覆盖"><div><strong id="conference-total">6</strong><span>个 AI 会议</span></div><div><strong id="year-total">5</strong><span>个完整年度</span></div><div><strong id="record-total">30</strong><span>条年度记录</span></div><p>覆盖 ACL · EMNLP · AAAI<br>ICLR · ICML · NeurIPS</p></div>
-    <div id="loading" role="status">正在载入会议数据…</div>
-    <div id="dashboard" hidden>
-      <section id="trends" class="section" aria-labelledby="trend-title">
-        <div class="section-head"><div><p class="eyebrow">01 / TRENDS</p><h2 id="trend-title">把变化放在一起看</h2><p class="section-description">选择会议进行比较；悬停或点击数据点，查看该年数值。</p></div><button id="reset" class="quiet-button" type="button">显示全部 ↺</button></div>
-        <div id="filters" class="conference-filters" role="group" aria-label="选择趋势图中的会议"></div>
-        <div class="chart-grid">
-          <article class="chart-panel"><div class="chart-heading"><div><h3>录取率</h3><p>ACCEPTANCE RATE</p></div><span class="unit">单位：%</span></div><div id="rate-chart" class="chart-container"></div><p class="chart-footnote">录取数 ÷ 当年来源统计分母；各年的分母口径可能不同。</p></article>
-          <article class="chart-panel"><div class="chart-heading"><div><h3>录取数量</h3><p>ACCEPTED PAPERS</p></div><span class="unit">单位：篇</span></div><div id="count-chart" class="chart-container"></div><p class="chart-footnote">主会 / 主研究轨，包含各展示形式；不重复累加 oral 与 poster。</p></article>
-        </div>
-        <div class="reading-note"><span aria-hidden="true">i</span><p><strong>怎样读这些数字？</strong> 不同会议对撤稿、desk reject 和 ARR 投稿池的处理不同。录取率适合观察趋势，不能直接作为论文难度或会议质量的排名。<a href="#methodology">查看统计方法 ↗</a></p></div>
-      </section>
-      <section id="annual" class="section" aria-labelledby="annual-title"><div class="section-head"><div><p class="eyebrow">02 / YEAR IN FOCUS</p><h2 id="annual-title">同一年，不同的研究现场</h2></div><div id="year-picker" class="year-picker" role="group" aria-label="选择年度对比年份"></div></div><div id="annual-cards" class="annual-grid" aria-live="polite"></div></section>
-      <section id="sources" class="section" aria-labelledby="source-title"><div class="section-head"><div><p class="eyebrow">03 / OPEN DATA</p><h2 id="source-title">每一个数字，都有来处</h2><p class="section-description">录取数采用来源公布的统计快照，可能与之后的最终出版数不同。</p></div><div class="downloads"><button id="download-csv" class="quiet-button" type="button">下载 CSV ↓</button><a class="quiet-button" href="./data/conferences.json" download="conferences.json">JSON ↗</a></div></div>
-        <div class="table-toolbar"><label>会议 <select id="table-conference"><option value="all">全部会议</option></select></label><label>年份 <select id="table-year"><option value="all">全部年份</option></select></label><span id="table-count" aria-live="polite"></span></div>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="会议年度数据明细，可横向滚动"><table><caption class="sr-only">会议、年份、录取数、统计分母、计算录取率及逐条来源</caption><thead><tr><th scope="col">会议 / 年份</th><th scope="col" class="numeric">录取数</th><th scope="col" class="numeric">统计分母</th><th scope="col" class="numeric">录取率</th><th scope="col">来源与口径</th></tr></thead><tbody id="data-table"></tbody></table></div>
-      </section>
-      <section id="methodology" class="methodology"><div><p class="eyebrow">METHODOLOGY & MAINTENANCE</p><h2>让比较有边界，<br>让数据可更新。</h2><a class="text-link" href="https://github.com/FANXIN-Gmail/conference#更新数据" target="_blank" rel="noopener noreferrer">查看维护指南 ↗</a></div><div class="method-content"><div><span>01</span><p><strong>相同的观察窗口</strong>首版选取最近五个所有会议均已完成的年度：2021–2025。2026 不混入这组五年对比，后续可以追加年份。</p></div><div><span>02</span><p><strong>清晰的统计范围</strong>ACL / EMNLP 为主会长短论文；AAAI 为主技术轨；ICLR / ICML / NeurIPS 为主研究轨。不含 Findings、Workshop、Industry、Demo、Position 或独立 Datasets & Benchmarks 轨。</p></div><div><span>03</span><p><strong>保留来源，统一计算</strong>图表录取率由录取数与来源分母计算，显示一位小数。官方原报率及分母调整写入逐条说明。优先采用官方报告；机构报道会单独标注。</p></div><div><span>04</span><p><strong>核验后更新</strong>新增或修订数据时保留来源、核验日期和口径，提交到仓库后页面自动更新。当前数据为人工核验快照，不声称实时抓取。</p></div></div></section>
-    </div>
-    <noscript><p>请启用 JavaScript 以查看交互图表。也可直接下载 <a href="./data/conferences.csv">CSV 数据</a> 或 <a href="./data/conferences.json">JSON 数据</a>。</p></noscript>
-  </main>
-  <footer class="wrap"><span class="footer-brand">conference<span class="orange">.</span></span><p>用数据观察研究，用来源校准判断。</p><a href="https://github.com/FANXIN-Gmail/conference/issues" target="_blank" rel="noopener noreferrer">反馈与数据纠错 ↗</a></footer>
-  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+<main class="wrap">
+<header><div><h1>AI 顶会统计<span class="orange">.</span></h1><p>2021–2025 · 主会 / 主研究轨</p></div><a href="https://github.com/FANXIN-Gmail/conference" target="_blank" rel="noopener noreferrer">GitHub ↗</a></header>
+<p id="loading" role="status">正在载入数据…</p>
+<div id="dashboard" hidden>
+<div class="controls"><div id="filters" class="conference-filters" role="group" aria-label="选择显示的会议"></div><button id="reset" class="quiet-button" type="button">全部</button></div>
+<div class="chart-grid">
+<section class="chart-panel" aria-labelledby="rate-title"><div class="chart-heading"><h2 id="rate-title">录取率</h2><span>单位：%</span></div><div id="rate-chart" class="chart-container"></div></section>
+<section class="chart-panel" aria-labelledby="count-title"><div class="chart-heading"><h2 id="count-title">录取数量</h2><span>单位：篇</span></div><div id="count-chart" class="chart-container"></div></section>
+</div>
+<p class="note">点击会议可筛选，悬停或点击数据点可查看数值。录取率按各年公开统计分母计算，不含 Findings 等独立分轨。</p>
+<details class="sources">
+<summary>数据与来源</summary>
+<div class="table-toolbar"><label>会议 <select id="table-conference"><option value="all">全部</option></select></label><label>年份 <select id="table-year"><option value="all">全部</option></select></label><button id="download-csv" class="quiet-button" type="button">下载 CSV ↓</button><span id="table-count" aria-live="polite"></span></div>
+<div class="table-scroll" tabindex="0" role="region" aria-label="会议年度数据，可横向滚动"><table><caption class="sr-only">会议各年录取数、统计分母、录取率与来源</caption><thead><tr><th scope="col">会议 / 年份</th><th scope="col" class="numeric">录取数</th><th scope="col" class="numeric">统计分母</th><th scope="col" class="numeric">录取率</th><th scope="col">来源与口径</th></tr></thead><tbody id="data-table"></tbody></table></div>
+</details>
+</div>
+<noscript><p>请启用 JavaScript 查看图表，或下载 <a href="./data/conferences.csv">CSV 数据</a>。</p></noscript>
+<footer><span>conference</span><span id="updated">核验于 2026.10.20</span></footer>
+</main>
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
 </body>
 </html>

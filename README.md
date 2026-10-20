@@ -7,9 +7,8 @@ AI 顶会数据观察：ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS，2021–2025
 ## 页面功能
 
 - 两张交互趋势图，逐年标记录取率与录取论文数量，可独立显示 / 隐藏会议。
-- 年度切换、六个会议的年度摘要、相对于 2021 年的规模变化。
-- 可按会议与年份筛选的 30 条原始记录；每条含可点击来源、核验日期、分母说明。
-- 下载 CSV（遵循表格当前筛选）或完整 JSON。
+- 数据与来源默认折叠；展开后可按会议与年份筛选 30 条原始记录，每条含来源、核验日期、分母说明。
+- 下载 CSV（遵循表格当前筛选）；仓库同时提供完整 JSON。
 - 适配手机；数据点支持键盘 Tab / Enter / Space 操作。
 
 ## 统计方法
@@ -46,4 +45,4 @@ AI 顶会数据观察：ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS，2021–2025
 
 无需安装依赖或构建。于仓库目录运行 `python3 -m http.server 8765`，访问 `http://localhost:8765`。请使用 HTTP 预览，直接双击 HTML 的 `file://` 模式会阻止浏览器读取 JSON。
 
-图表由原生 SVG / JavaScript 绘制，无第三方图表运行库。字体优先使用 Google Fonts，网络不可达时回退系统字体。GitHub Pages 设为 `Deploy from a branch` → `main` → `/ (root)`。
+图表由原生 SVG / JavaScript 绘制，无第三方图表运行库。使用系统字体，无外部字体请求。GitHub Pages 设为 `Deploy from a branch` → `main` → `/ (root)`。
