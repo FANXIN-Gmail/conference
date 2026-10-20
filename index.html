@@ -6,15 +6,15 @@
 <meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS、WWW、CVPR、ICCV、ECCV 2021–2026 年录取率与投稿数量。">
 <title>conference</title>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="./styles.css">
-<script src="./app.js?v=www-cv-20261020" type="module"></script>
+<link rel="stylesheet" href="./styles.css?v=selection-20261021">
+<script src="./app.js?v=selection-20261021" type="module"></script>
 </head>
 <body>
 <main class="wrap">
 <header><div><h1>AI 顶会统计<span class="orange">.</span></h1><p><span id="year-range">2021–2026</span> · 主会 / 主研究轨</p></div><a href="https://github.com/FANXIN-Gmail/conference" target="_blank" rel="noopener noreferrer">GitHub ↗</a></header>
 <p id="loading" role="status">正在载入数据…</p>
 <div id="dashboard" hidden>
-<div class="controls"><div id="filters" class="conference-filters" role="group" aria-label="选择显示的会议"></div><button id="reset" class="quiet-button" type="button">全部</button></div>
+<div class="controls"><div id="filters" class="conference-filters" role="group" aria-label="选择显示的会议"></div><div class="selection-actions" role="group" aria-label="批量选择会议"><button id="select-all" class="quiet-button" type="button">全选</button><button id="clear-all" class="quiet-button" type="button">取消全选</button></div></div>
 <div class="chart-grid">
 <section class="chart-panel" aria-labelledby="rate-title"><div class="chart-heading"><h2 id="rate-title">录取率</h2><span>单位：%</span></div><div id="rate-chart" class="chart-container"></div></section>
 <section class="chart-panel" aria-labelledby="count-title"><div class="chart-heading"><h2 id="count-title">投稿数量</h2><span>单位：篇</span></div><div id="count-chart" class="chart-container"></div></section>

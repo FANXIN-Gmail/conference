@@ -113,7 +113,8 @@ async function init(){
     $('table-conference').insertAdjacentHTML('beforeend',dataset.conferences.map(c=>`<option value="${c.id}">${c.id}</option>`).join(''));
     $('table-year').insertAdjacentHTML('beforeend',years.slice().reverse().map(y=>`<option value="${y}">${y}</option>`).join(''));
     $('table-conference').addEventListener('change',renderTable);$('table-year').addEventListener('change',renderTable);
-    $('reset').addEventListener('click',()=>{selected=new Set(dataset.conferences.map(c=>c.id));renderFilters();renderCharts();});
+    $('select-all').addEventListener('click',()=>{selected=new Set(dataset.conferences.map(c=>c.id));renderFilters();renderCharts();});
+    $('clear-all').addEventListener('click',()=>{selected.clear();renderFilters();renderCharts();});
     $('download-csv').addEventListener('click',downloadCSV);
     document.addEventListener('keydown',event=>{if(event.key==='Escape')hideTooltip();});
     window.addEventListener('scroll',hideTooltip,{passive:true});
