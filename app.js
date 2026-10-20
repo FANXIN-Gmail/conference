@@ -8,7 +8,7 @@ const tooltip = $('tooltip');
 
 function hideTooltip() { tooltip.hidden = true; }
 function showTooltip(event, row) {
-  tooltip.innerHTML = `<strong>${escape(row.conference)} · ${row.year}</strong><em>${percent(row)}</em><br><span>录取数量：${number(row.accepted)} 篇</span>`;
+  tooltip.innerHTML = `<strong>${escape(row.conference)} · ${row.year}</strong><em>${percent(row)}</em><br><span>投稿数量：${number(row.submissions)} 篇</span>`;
   tooltip.hidden = false;
   const rect = event.currentTarget.getBoundingClientRect();
   const x = event.clientX || rect.left + rect.width / 2;
@@ -23,12 +23,12 @@ function renderChart(id, metric) {
   const W = compact ? 340 : 560, H = compact ? 300 : 320;
   const left = compact ? 38 : 43, right = compact ? 100 : 118, top = 20, bottom = 39;
   const plotW = W - left - right, plotH = H - top - bottom;
-  const allValues = dataset.records.map(r => isRate ? rate(r) : r.accepted);
-  const step = isRate ? 10 : (Math.max(...allValues) > 10000 ? 2000 : 1000);
+  const allValues = dataset.records.map(r => isRate ? rate(r) : r.submissions);
+  const step = isRate ? 10 : (Math.max(...allValues) > 10000 ? 5000 : 1000);
   const max = Math.ceil(Math.max(...allValues) / step) * step;
   const x = year => left + years.indexOf(year) * plotW / Math.max(1, years.length - 1);
   const y = value => top + plotH - value / max * plotH;
-  const parts = [`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${isRate ? '录取率' : '录取数量'}趋势，${years[0]}至${years.at(-1)}年。各数据点可用 Tab 键浏览。">`];
+  const parts = [`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${isRate ? '录取率' : '投稿数量'}趋势，${years[0]}至${years.at(-1)}年。各数据点可用 Tab 键浏览。">`];
   parts.push(`<rect x="${x(focusYear)-14}" y="${top}" width="28" height="${plotH}" rx="4" fill="#f1f4f7"/>`);
   for (let v = 0; v <= max; v += step) {
     parts.push(`<line x1="${left}" y1="${y(v)}" x2="${W-right}" y2="${y(v)}" stroke="#e7ecf1" stroke-dasharray="3 4"/><text class="axis-label" x="${left-10}" y="${y(v)+4}" text-anchor="end">${isRate ? `${v}%` : number(v)}</text>`);
@@ -37,14 +37,14 @@ function renderChart(id, metric) {
   const labels = [];
   dataset.conferences.filter(c => selected.has(c.id)).forEach(c => {
     const rows = dataset.records.filter(r => r.conference === c.id).sort((a,b) => a.year-b.year);
-    const points = rows.map(r => `${x(r.year)},${y(isRate ? rate(r) : r.accepted)}`).join(' ');
+    const points = rows.map(r => `${x(r.year)},${y(isRate ? rate(r) : r.submissions)}`).join(' ');
     parts.push(`<polyline points="${points}" fill="none" stroke="${c.color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`);
     rows.forEach(r => {
-      const label = `${r.conference} ${r.year}，录取率 ${percent(r)}，录取 ${number(r.accepted)} 篇。按回车查看该年度。`;
-      parts.push(`<circle class="chart-point" cx="${x(r.year)}" cy="${y(isRate ? rate(r) : r.accepted)}" r="${r.year===focusYear ? 4.8 : 3.6}" fill="white" stroke="${c.color}" stroke-width="2" tabindex="0" role="button" aria-label="${label}" data-conference="${c.id}" data-year="${r.year}"><title>${label}</title></circle>`);
+      const label = `${r.conference} ${r.year}，录取率 ${percent(r)}，投稿 ${number(r.submissions)} 篇。按回车查看该年度。`;
+      parts.push(`<circle class="chart-point" cx="${x(r.year)}" cy="${y(isRate ? rate(r) : r.submissions)}" r="${r.year===focusYear ? 4.8 : 3.6}" fill="white" stroke="${c.color}" stroke-width="2" tabindex="0" role="button" aria-label="${label}" data-conference="${c.id}" data-year="${r.year}"><title>${label}</title></circle>`);
     });
     const last = rows.at(-1);
-    labels.push({c, row:last, actual:y(isRate ? rate(last) : last.accepted)});
+    labels.push({c, row:last, actual:y(isRate ? rate(last) : last.submissions)});
   });
   // Label spacing avoids collisions even when several conference rates are close.
   labels.sort((a,b)=>a.actual-b.actual);
@@ -53,7 +53,7 @@ function renderChart(id, metric) {
     labels.at(-1).labelY = H-bottom;
     for(let i=labels.length-2;i>=0;i--) labels[i].labelY=Math.min(labels[i].labelY,labels[i+1].labelY-19);
   }
-  labels.forEach(l=>parts.push(`<path d="M ${W-right+5} ${l.actual} L ${W-right+17} ${l.labelY} L ${W-right+21} ${l.labelY}" fill="none" stroke="${l.c.color}" stroke-width=".8" opacity=".6"/><text class="series-label" x="${W-right+25}" y="${l.labelY+3}" fill="${l.c.color}">${l.c.id} ${isRate ? percent(l.row) : number(l.row.accepted)}</text>`));
+  labels.forEach(l=>parts.push(`<path d="M ${W-right+5} ${l.actual} L ${W-right+17} ${l.labelY} L ${W-right+21} ${l.labelY}" fill="none" stroke="${l.c.color}" stroke-width=".8" opacity=".6"/><text class="series-label" x="${W-right+25}" y="${l.labelY+3}" fill="${l.c.color}">${l.c.id} ${isRate ? percent(l.row) : number(l.row.submissions)}</text>`));
   if (!selected.size) parts.push(`<text x="${W/2}" y="${H/2}" text-anchor="middle" font-size="13" fill="#697787">请选择至少一个会议</text>`);
   parts.push('</svg>');
   $(id).innerHTML=parts.join('');
@@ -78,7 +78,7 @@ function renderFilters() {
     renderCharts();
   }));
 }
-function renderCharts(){hideTooltip();renderChart('rate-chart','rate');renderChart('count-chart','accepted');}
+function renderCharts(){hideTooltip();renderChart('rate-chart','rate');renderChart('count-chart','submissions');}
 function selectYear(year){focusYear=year;renderCharts();}
 function filteredRows(){return dataset.records.filter(r=>($('table-conference').value==='all'||r.conference===$('table-conference').value)&&($('table-year').value==='all'||r.year===Number($('table-year').value))).sort((a,b)=>b.year-a.year||dataset.conferences.findIndex(c=>c.id===a.conference)-dataset.conferences.findIndex(c=>c.id===b.conference));}
 function renderTable(){
@@ -88,12 +88,12 @@ function renderTable(){
     const c=dataset.conferences.find(c=>c.id===r.conference),s=r.sources[0];
     const links=r.sources.slice(1).map(s=>`<a class="supplemental" href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)} ↗</a>`).join('');
     const kindLabel={institution:'机构报道',archive:'主席邮件存档',official:'官方来源'}[s.kind];
-    return `<tr><td style="--series:${c.color}"><span class="dot"></span><strong>${c.id}</strong><span class="year">${r.year}</span></td><td class="numeric">${number(r.accepted)}</td><td class="numeric">${percent(r)}</td><td><span class="source-kind ${s.kind==='institution'?'institution':''}">${kindLabel}</span><a class="source-link" href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)} ↗</a><details class="row-notes"><summary>统计口径与备注</summary><p>${escape(r.scope)}。${escape(r.displayNote??'')}<br>核验日期：${r.verifiedAt}。</p>${links}</details></td></tr>`;
+    return `<tr><td style="--series:${c.color}"><span class="dot"></span><strong>${c.id}</strong><span class="year">${r.year}</span></td><td class="numeric">${number(r.submissions)}</td><td class="numeric">${percent(r)}</td><td><span class="source-kind ${s.kind==='institution'?'institution':''}">${kindLabel}</span><a class="source-link" href="${escape(s.url)}" target="_blank" rel="noopener noreferrer">${escape(s.title)} ↗</a><details class="row-notes"><summary>统计口径与备注</summary><p>${escape(r.scope)}。${escape(r.displayNote??'')}<br>核验日期：${r.verifiedAt}。</p>${links}</details></td></tr>`;
   }).join('');
 }
 function downloadCSV(){
-  const header=['conference','year','accepted','acceptance_rate_percent','scope','verified_at','sources'];
-  const rows=filteredRows().map(r=>[r.conference,r.year,r.accepted,rate(r).toFixed(4),r.scope,r.verifiedAt,r.sources.map(s=>s.url).join(' | ')]);
+  const header=['conference','year','submissions','acceptance_rate_percent','scope','verified_at','sources'];
+  const rows=filteredRows().map(r=>[r.conference,r.year,r.submissions,rate(r).toFixed(4),r.scope,r.verifiedAt,r.sources.map(s=>s.url).join(' | ')]);
   const csv='\uFEFF'+[header,...rows].map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
   const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),a=document.createElement('a');
   a.href=url;a.download='conference-statistics.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
