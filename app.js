@@ -1,9 +1,11 @@
+import { renderDeadlineTimeline } from './timeline.mjs?v=deadlines-20261021';
+
 const $ = (id) => document.getElementById(id);
 const number = (n) => n.toLocaleString('en-US');
 const rate = (row) => 100 * row.accepted / row.submissions;
 const percent = (row) => `${rate(row).toFixed(1)}%`;
 const escape = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let dataset, years, selected, focusYear;
+let dataset, deadlines, years, selected, focusYear;
 const tooltip = $('tooltip');
 
 function hideTooltip() { tooltip.hidden = true; }
@@ -81,7 +83,22 @@ function renderFilters() {
     renderCharts();
   }));
 }
-function renderCharts(){hideTooltip();renderChart('rate-chart','rate');renderChart('count-chart','submissions');}
+function renderCharts(){hideTooltip();renderChart('rate-chart','rate');renderChart('count-chart','submissions');renderDeadlines();}
+function renderDeadlines(){
+  if(deadlines)renderDeadlineTimeline(deadlines,selected,Number($('deadline-year').value));
+}
+async function initDeadlines(){
+  try{
+    const response=await fetch('./data/deadlines.json');
+    if(!response.ok)throw new Error('无法读取截止日期');
+    deadlines=await response.json();
+    $('deadline-year').innerHTML=deadlines.editions.slice().sort((a,b)=>b-a).map(year=>`<option value="${year}">${year} 届</option>`).join('');
+    $('deadline-year').value=String(deadlines.defaultEdition);
+    $('deadline-year').addEventListener('change',renderDeadlines);
+    renderDeadlines();
+    setInterval(renderDeadlines,60000);
+  }catch(error){$('deadline-timeline').innerHTML='<p class="deadline-empty">截止日期暂时无法载入，请稍后刷新。</p>';console.error(error);}
+}
 function selectYear(year){focusYear=year;renderCharts();}
 function filteredRows(){return dataset.records.filter(r=>($('table-conference').value==='all'||r.conference===$('table-conference').value)&&($('table-year').value==='all'||r.year===Number($('table-year').value))).sort((a,b)=>b.year-a.year||dataset.conferences.findIndex(c=>c.id===a.conference)-dataset.conferences.findIndex(c=>c.id===b.conference));}
 function renderTable(){
@@ -121,6 +138,7 @@ async function init(){
     window.addEventListener('resize',()=>requestAnimationFrame(renderCharts));
     renderFilters();renderCharts();renderTable();
     $('loading').hidden=true;$('dashboard').hidden=false;
+    await initDeadlines();
   }catch(error){$('loading').innerHTML='数据暂时无法载入。请刷新页面，或前往 <a href="https://github.com/FANXIN-Gmail/conference/tree/main/data">GitHub 查看原始数据 ↗</a>。';console.error(error);}
 }
 init();

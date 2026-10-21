@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="ACL、EMNLP、AAAI、ICLR、ICML、NeurIPS、WWW、CVPR、ICCV、ECCV 2021–2026 年录取率与投稿数量。">
+<meta name="description" content="AI 顶会录取率、投稿数量与最新投稿截止日期时间轴。">
 <title>conference</title>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="./styles.css?v=selection-20261021">
-<script src="./app.js?v=selection-20261021" type="module"></script>
+<link rel="stylesheet" href="./styles.css?v=deadlines-20261021">
+<script src="./app.js?v=deadlines-20261021" type="module"></script>
 </head>
 <body>
 <main class="wrap">
@@ -20,6 +20,12 @@
 <section class="chart-panel" aria-labelledby="count-title"><div class="chart-heading"><h2 id="count-title">投稿数量</h2><span>单位：篇</span></div><div id="count-chart" class="chart-container"></div></section>
 </div>
 <p class="note">点击会议可筛选，悬停或点击数据点可查看数值。ICCV 单数年、ECCV 双数年举办。投稿数量按各届来源口径，部分为有效投稿、送审数或 ARR 投稿池。</p>
+<section class="deadline-panel chart-panel" aria-labelledby="deadline-title">
+<div class="deadline-heading"><h2 id="deadline-title">投稿截止时间轴</h2><div class="deadline-options"><span class="deadline-legend"><i></i>已截止</span><label class="sr-only" for="deadline-year">截止日期届次</label><select id="deadline-year"></select></div></div>
+<div id="deadline-timeline" class="deadline-scroll" tabindex="0" role="region" aria-label="投稿截止日期时间轴，可横向滚动"></div>
+<p id="deadline-pending" class="deadline-pending" hidden></p>
+<p class="deadline-note"><span class="deadline-mobile-hint">左右滑动查看完整时间轴。</span>按会议届次与官方时区显示，灰色表示投稿已截止。ACL / EMNLP 标记最终 ARR 投稿周期；请提前完成摘要或预注册。点击会议查看官网。</p>
+</section>
 <details class="sources">
 <summary>数据与来源</summary>
 <p class="note">CV 会议 CORE A* 评级（ICORE 2026）：<a href="https://portal.core.edu.au/conf-ranks/604/" target="_blank" rel="noopener noreferrer">CVPR ↗</a>、<a href="https://portal.core.edu.au/conf-ranks/638/" target="_blank" rel="noopener noreferrer">ICCV ↗</a>、<a href="https://portal.core.edu.au/conf-ranks/479/" target="_blank" rel="noopener noreferrer">ECCV ↗</a>。</p>

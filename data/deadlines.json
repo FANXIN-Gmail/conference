@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-21",
+  "editions": [
+    2026,
+    2027
+  ],
+  "defaultEdition": 2027,
+  "scope": "Main research full-paper submission; ACL/EMNLP use the final eligible ARR submission cycle, not conference commitment.",
+  "records": [
+    {
+      "conference": "ACL",
+      "year": 2026,
+      "status": "announced",
+      "date": "2026-01-05",
+      "deadlineAt": "2026-01-05T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "ARR 全文",
+      "note": "最终可参与 ACL 2026 的 ARR 全文投稿周期；已有更早 ARR 评审的论文可直接 commitment。会议 commitment 为 2026-03-14 23:59 AoE。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://2026.aclweb.org/calls/main_conference_papers/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "EMNLP",
+      "year": 2026,
+      "status": "announced",
+      "date": "2026-05-25",
+      "deadlineAt": "2026-05-25T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "ARR 全文",
+      "note": "最终 ARR 全文投稿周期；May 周期投稿需选择 EMNLP 为拟 commitment 会议。会议 commitment 为 2026-08-02 23:59 AoE；更早 ARR 已审稿论文另按官方规则 commitment。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://2026.emnlp.org/calls/main_conference_papers/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "AAAI",
+      "year": 2026,
+      "status": "announced",
+      "date": "2025-08-01",
+      "deadlineAt": "2025-08-01T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "全文投稿",
+      "note": "主技术轨单个投稿周期，分两阶段审稿；不将 IAAI 的延期或 8 月 4 日补充材料截止混作主会全文截止。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://aaai.org/conference/aaai/aaai-26/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2025-07-25",
+        "deadlineAt": "2025-07-25T23:59:00-12:00",
+        "timeLabel": "23:59 AoE"
+      }
+    },
+    {
+      "conference": "ICLR",
+      "year": 2026,
+      "status": "announced",
+      "date": "2025-09-24",
+      "deadlineAt": "2025-09-24T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "全文投稿",
+      "note": "主会议全文投稿，不含 Workshop；Dates 页面用于确认跨年的实际日历年份。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://iclr.cc/Conferences/2026/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://iclr.cc/Conferences/2026/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2025-09-19",
+        "deadlineAt": "2025-09-19T23:59:00-12:00",
+        "timeLabel": "23:59 AoE"
+      }
+    },
+    {
+      "conference": "ICML",
+      "year": 2026,
+      "status": "announced",
+      "date": "2026-01-28",
+      "deadlineAt": "2026-01-28T23:59:59-12:00",
+      "timeLabel": "23:59:59 AoE",
+      "kind": "全文投稿",
+      "note": "主研究轨全文截止，CFP 明确不延期；精确秒数以官方 Dates 倒计时为准，不采用约数次日 UTC 正午。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://icml.cc/Conferences/2026/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://icml.cc/Conferences/2026/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2026-01-23",
+        "deadlineAt": "2026-01-23T23:59:59-12:00",
+        "timeLabel": "23:59:59 AoE"
+      }
+    },
+    {
+      "conference": "NeurIPS",
+      "year": 2026,
+      "status": "announced",
+      "date": "2026-05-06",
+      "deadlineAt": "2026-05-06T23:59:59-12:00",
+      "timeLabel": "23:59:59 AoE",
+      "kind": "全文投稿",
+      "note": "仅主研究轨；全文与全部补充材料同日截止。Evaluations & Datasets、Position Papers 等独立轨道不计入。精确秒数来自官方 Dates。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://neurips.cc/Conferences/2026/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://neurips.cc/Conferences/2026/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2026-05-04",
+        "deadlineAt": "2026-05-04T23:59:59-12:00",
+        "timeLabel": "23:59:59 AoE"
+      }
+    },
+    {
+      "conference": "WWW",
+      "year": 2026,
+      "status": "announced",
+      "date": "2025-10-07",
+      "deadlineAt": "2025-10-08T00:00:00-12:00",
+      "timeLabel": "AoE 日终",
+      "kind": "全文投稿",
+      "note": "主研究轨全文截止，官方精度为 AoE 日终。必须先完成真实摘要及作者信息；不可在摘要截止后增删或调整作者次序。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://www2026.thewebconf.org/calls/research-tracks.html",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2025-09-30",
+        "deadlineAt": "2025-10-01T00:00:00-12:00",
+        "timeLabel": "AoE 日终"
+      }
+    },
+    {
+      "conference": "CVPR",
+      "year": 2026,
+      "status": "announced",
+      "date": "2025-11-13",
+      "deadlineAt": "2025-11-13T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "全文投稿",
+      "note": "主会全文未延期。论文预注册延至 11 月 7 日；随后 11 月 16 日个人 Enrollment Forms / Profiles 截止不是论文全文截止。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://cvpr.thecvf.com/Conferences/2026/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://cvpr.thecvf.com/Conferences/2026/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "预注册",
+        "date": "2025-11-07",
+        "deadlineAt": "2025-11-07T23:59:00-12:00",
+        "timeLabel": "23:59 AoE"
+      }
+    },
+    {
+      "conference": "ICCV",
+      "year": 2026,
+      "status": "not-held",
+      "date": null,
+      "deadlineAt": null,
+      "timeLabel": null,
+      "kind": "全文投稿",
+      "note": "ICCV 单数年隔年举办，2026 年不举办，不以 2025 或预测的 2027 日期代填。",
+      "sources": [
+        {
+          "title": "官方日期 / 举办周期",
+          "url": "https://www.thecvf.com/?page_id=529",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "ECCV",
+      "year": 2026,
+      "status": "announced",
+      "date": "2026-03-05",
+      "deadlineAt": "2026-03-05T23:00:00+01:00",
+      "timeLabel": "23:00 CET (UTC+1)",
+      "kind": "全文投稿",
+      "note": "主会全文截止为 23:00 CET，非 AoE。论文预注册为 2 月 26 日；个人 Profiles / Author Enrollment Forms 的 3 月 2 日延期不影响论文预注册或全文截止。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://eccv.ecva.net/Conferences/2026/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://eccv.ecva.net/Conferences/2026/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "预注册",
+        "date": "2026-02-26",
+        "deadlineAt": "2026-02-26T23:00:00+01:00",
+        "timeLabel": "23:00 CET (UTC+1)"
+      }
+    },
+    {
+      "conference": "ACL",
+      "year": 2027,
+      "status": "announced",
+      "date": "2027-01-04",
+      "deadlineAt": "2027-01-04T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "ARR 全文",
+      "note": "最终可参与 ACL 2027 的 ARR 全文投稿周期；更早周期已有 reviews 与 meta-review 的论文也可 commitment，commitment 日期尚未公布。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://2027.aclweb.org/calls/main/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "EMNLP",
+      "year": 2027,
+      "status": "unannounced",
+      "date": null,
+      "deadlineAt": null,
+      "timeLabel": null,
+      "kind": "全文投稿",
+      "note": "截至核验日，未从官方确认 EMNLP 2027 主会最终 ARR 投稿周期与 commitment 日期；不采用聚合站预测日期。",
+      "sources": [
+        {
+          "title": "官方日期 / 举办周期",
+          "url": "https://aclrollingreview.org/dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "AAAI",
+      "year": 2027,
+      "status": "announced",
+      "date": "2026-07-28",
+      "deadlineAt": "2026-07-28T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "全文投稿",
+      "note": "主技术轨全文截止；一个投稿周期、两阶段审稿。补充材料截止为 2026-07-31，不替代全文截止。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://aaai.org/conference/aaai/aaai-27/main-technical-track-call/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2026-07-21",
+        "deadlineAt": "2026-07-21T23:59:00-12:00",
+        "timeLabel": "23:59 AoE"
+      }
+    },
+    {
+      "conference": "ICLR",
+      "year": 2027,
+      "status": "announced",
+      "date": "2026-09-25",
+      "deadlineAt": "2026-09-25T23:59:59-12:00",
+      "timeLabel": "23:59:59 AoE",
+      "kind": "全文投稿",
+      "note": "采用当前 CFP、Author Guidelines、Dates 一致的 9 月 25 日；Reviewer Guidelines 的 September 16 残留旧文不采用。精确秒数由官方 Dates 倒计时核实。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://iclr.cc/Conferences/2027/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://iclr.cc/Conferences/2027/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2026-09-18",
+        "deadlineAt": "2026-09-18T23:59:59-12:00",
+        "timeLabel": "23:59:59 AoE"
+      }
+    },
+    {
+      "conference": "ICML",
+      "year": 2027,
+      "status": "unannounced",
+      "date": null,
+      "deadlineAt": null,
+      "timeLabel": null,
+      "kind": "全文投稿",
+      "note": "截至核验日，官方仅公布 2027 年将在南美洲举行，未公布可核实的主研究轨全文投稿日期。",
+      "sources": [
+        {
+          "title": "官方日期 / 举办周期",
+          "url": "https://icml.cc/Conferences/FutureMeetings",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "NeurIPS",
+      "year": 2027,
+      "status": "unannounced",
+      "date": null,
+      "deadlineAt": null,
+      "timeLabel": null,
+      "kind": "全文投稿",
+      "note": "截至核验日，官方仅公布 2027 年在欧洲举行，未公布可核实的主研究轨全文截止日期。",
+      "sources": [
+        {
+          "title": "官方日期 / 举办周期",
+          "url": "https://neurips.cc/Conferences/FutureMeetings",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "WWW",
+      "year": 2027,
+      "status": "announced",
+      "date": "2026-10-25",
+      "deadlineAt": "2026-10-26T00:00:00-12:00",
+      "timeLabel": "AoE 日终",
+      "kind": "全文投稿",
+      "note": "官方精度为 AoE 日终。2026-10-18 摘要截止早于全文；截至 10 月 21 日摘要已截止，未提前登记摘要的论文不能据此视为仍可新投稿。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://www2027.thewebconf.org/research-track-papers/",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2026-10-18",
+        "deadlineAt": "2026-10-19T00:00:00-12:00",
+        "timeLabel": "AoE 日终"
+      }
+    },
+    {
+      "conference": "CVPR",
+      "year": 2027,
+      "status": "announced",
+      "date": "2026-11-16",
+      "deadlineAt": "2026-11-16T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
+      "kind": "全文投稿",
+      "note": "主会议全文截止，官方明确固定且不延期；须在 11 月 10 日先完成 Paper Enrollment / Registration。附件为 11 月 23 日截止。",
+      "sources": [
+        {
+          "title": "官方 Call for Papers",
+          "url": "https://cvpr.thecvf.com/Conferences/2027/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://cvpr.thecvf.com/Conferences/2027/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21",
+      "prerequisite": {
+        "label": "预注册",
+        "date": "2026-11-10",
+        "deadlineAt": "2026-11-10T23:59:00-12:00",
+        "timeLabel": "23:59 AoE"
+      }
+    },
+    {
+      "conference": "ICCV",
+      "year": 2027,
+      "status": "unannounced",
+      "date": null,
+      "deadlineAt": null,
+      "timeLabel": null,
+      "kind": "全文投稿",
+      "note": "官方目前仅列会议日程，主会议全文投稿截止尚未公布；不填第三方预测的 2027 年 3 月日期。",
+      "sources": [
+        {
+          "title": "官方日期 / 举办周期",
+          "url": "https://iccv.thecvf.com/Conferences/2027/Dates",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "conference": "ECCV",
+      "year": 2027,
+      "status": "not-held",
+      "date": null,
+      "deadlineAt": null,
+      "timeLabel": null,
+      "kind": "全文投稿",
+      "note": "ECCV 偶数年隔年举办，2027 年不举办；不使用 ICCV 2027 或预测的 ECCV 2028 日期代填。",
+      "sources": [
+        {
+          "title": "官方日期 / 举办周期",
+          "url": "https://eccv.ecva.net/Conferences/2024",
+          "kind": "official"
+        }
+      ],
+      "verifiedAt": "2026-10-21"
+    }
+  ]
+}
