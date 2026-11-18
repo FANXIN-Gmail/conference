@@ -89,7 +89,7 @@ function renderDeadlines(){
 }
 async function initDeadlines(){
   try{
-    const response=await fetch('./data/deadlines.json');
+    const response=await fetch('./data/deadlines.json', { cache: 'no-cache' });
     if(!response.ok)throw new Error('无法读取截止日期');
     deadlines=await response.json();
     $('deadline-year').innerHTML=deadlines.editions.slice().sort((a,b)=>b-a).map(year=>`<option value="${year}">${year} 届</option>`).join('');
@@ -120,7 +120,7 @@ function downloadCSV(){
 }
 async function init(){
   try{
-    const response=await fetch('./data/conferences.json');
+    const response=await fetch('./data/conferences.json', { cache: 'no-cache' });
     if(!response.ok)throw new Error('无法读取数据文件');
     dataset=await response.json();
     years=[...new Set(dataset.records.map(r=>r.year))].sort((a,b)=>a-b);
