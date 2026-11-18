@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-11-18",
   "editions": [
     2026,
     2027
@@ -271,7 +271,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21"
+      "verifiedAt": "2026-11-18"
     },
     {
       "conference": "EMNLP",
@@ -289,7 +289,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21"
+      "verifiedAt": "2026-11-18"
     },
     {
       "conference": "AAAI",
@@ -299,7 +299,7 @@
       "deadlineAt": "2026-07-28T23:59:00-12:00",
       "timeLabel": "23:59 AoE",
       "kind": "全文投稿",
-      "note": "主技术轨全文截止；一个投稿周期、两阶段审稿。补充材料截止为 2026-07-31，不替代全文截止。",
+      "note": "主技术轨全文截止；一个投稿周期、两阶段审稿。补充材料截止为 2026-07-31，不替代全文截止。官方更新的作者反馈期为 2026-10-24 至 10-31，最终录取或拒稿通知为 2026-11-30；截至核验日尚未到最终结果公布日期。",
       "sources": [
         {
           "title": "官方 Call for Papers",
@@ -307,7 +307,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21",
+      "verifiedAt": "2026-11-18",
       "prerequisite": {
         "label": "摘要",
         "date": "2026-07-21",
@@ -323,7 +323,7 @@
       "deadlineAt": "2026-09-25T23:59:59-12:00",
       "timeLabel": "23:59:59 AoE",
       "kind": "全文投稿",
-      "note": "采用当前 CFP、Author Guidelines、Dates 一致的 9 月 25 日；Reviewer Guidelines 的 September 16 残留旧文不采用。精确秒数由官方 Dates 倒计时核实。",
+      "note": "主会全文为 2026-09-25，摘要为 09-18，采用 CFP 与 Dates 一致日期。官方 Dates 的 Author–Reviewer Discussion 为 2026-11-05 至 11-18，Final Decisions 为 2026-12-16；评审意见释放不等于最终录取结果。",
       "sources": [
         {
           "title": "官方 Call for Papers",
@@ -336,7 +336,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21",
+      "verifiedAt": "2026-11-18",
       "prerequisite": {
         "label": "摘要",
         "date": "2026-09-18",
@@ -347,20 +347,31 @@
     {
       "conference": "ICML",
       "year": 2027,
-      "status": "unannounced",
-      "date": null,
-      "deadlineAt": null,
-      "timeLabel": null,
+      "status": "announced",
+      "date": "2027-01-22",
+      "deadlineAt": "2027-01-22T23:59:00-12:00",
+      "timeLabel": "23:59 AoE",
       "kind": "全文投稿",
-      "note": "截至核验日，官方仅公布 2027 年将在南美洲举行，未公布可核实的主研究轨全文投稿日期。",
+      "note": "官方 CFP 与 Dates 已公布：摘要 2027-01-14、全文 2027-01-22，均为 23:59 AoE，且不延期。全文及补充材料同时提交；Position Papers 使用独立投稿入口，不纳入本节点。第一阶段拒稿通知为 2027-02-23，最终结果为 2027-05-03。",
       "sources": [
         {
-          "title": "官方日期 / 举办周期",
-          "url": "https://icml.cc/Conferences/FutureMeetings",
+          "title": "官方 Call for Papers",
+          "url": "https://icml.cc/Conferences/2027/CallForPapers",
+          "kind": "official"
+        },
+        {
+          "title": "官方 Dates",
+          "url": "https://icml.cc/Conferences/2027/Dates",
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21"
+      "verifiedAt": "2026-11-18",
+      "prerequisite": {
+        "label": "摘要",
+        "date": "2027-01-14",
+        "deadlineAt": "2027-01-14T23:59:00-12:00",
+        "timeLabel": "23:59 AoE"
+      }
     },
     {
       "conference": "NeurIPS",
@@ -378,7 +389,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21"
+      "verifiedAt": "2026-11-18"
     },
     {
       "conference": "WWW",
@@ -387,8 +398,8 @@
       "date": "2026-10-25",
       "deadlineAt": "2026-10-26T00:00:00-12:00",
       "timeLabel": "AoE 日终",
-      "kind": "全文投稿",
-      "note": "官方精度为 AoE 日终。2026-10-18 摘要截止早于全文；截至 10 月 21 日摘要已截止，未提前登记摘要的论文不能据此视为仍可新投稿。",
+      "kind": "长文投稿",
+      "note": "本节点为主研究轨长文：摘要 2026-10-18、全文 2026-10-25，均为 AoE 日终。官方另列短文摘要 2026-11-09、全文 2026-11-16，均已截止。长文评审结果于 2026-12-15 释放，rebuttal 为 12 月 15–20 日；长短文最终录取通知均为 2027-01-04，不将评审结果释放视为录取通知。",
       "sources": [
         {
           "title": "官方 Call for Papers",
@@ -396,7 +407,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21",
+      "verifiedAt": "2026-11-18",
       "prerequisite": {
         "label": "摘要",
         "date": "2026-10-18",
@@ -412,7 +423,7 @@
       "deadlineAt": "2026-11-16T23:59:00-12:00",
       "timeLabel": "23:59 AoE",
       "kind": "全文投稿",
-      "note": "主会议全文截止，官方明确固定且不延期；须在 11 月 10 日先完成 Paper Enrollment / Registration。附件为 11 月 23 日截止。",
+      "note": "主会议全文截止为 2026-11-16 23:59 AoE，官方明确固定且不延期；须在 11 月 10 日先完成论文预注册。补充材料为 11 月 23 日截止，不延长全文投稿。评审释放为 2027-01-25，最终录取结果为 2027-02-25。",
       "sources": [
         {
           "title": "官方 Call for Papers",
@@ -425,7 +436,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21",
+      "verifiedAt": "2026-11-18",
       "prerequisite": {
         "label": "预注册",
         "date": "2026-11-10",
@@ -449,7 +460,7 @@
           "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-21"
+      "verifiedAt": "2026-11-18"
     },
     {
       "conference": "ECCV",

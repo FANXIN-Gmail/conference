@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-20",
+  "updatedAt": "2026-11-18",
   "window": {
     "start": 2021,
     "end": 2026
@@ -655,25 +655,20 @@
     {
       "conference": "EMNLP",
       "year": 2026,
-      "accepted": 2719,
-      "submissions": 17669,
-      "reportedRate": 15.4,
-      "scope": "主会长短论文，不含 Findings",
-      "note": "采用2026-08-21 KAIST与2026-09-16广东外语外贸大学公告一致的录取决定统计：2719主会、17669投稿、15.4%；Findings2533不计入。截至2026-10-20未取得会议官方精确总量统计，机构报道暂定，不能称最终出版篇数；后续 author roster 的2710为不同名单快照，暂不混用。",
-      "displayNote": "录取决定统计，机构报道核验；待会议正式统计复核。",
+      "accepted": 2704,
+      "submissions": 17661,
+      "reportedRate": 15.31,
+      "scope": "主会长短论文，不含 Findings；官方 ARR 统计分母（含撤稿与 desk reject）",
+      "note": "正式论文集程序主席序言第 viii 页（PDF 第 8 页）明确主会录取 2704（2626 长文、78 短文），统计分母 17661，原报 15.31%；其中 2033 撤稿与 1422 desk reject 仍计入分母。序言按 ARR 多阶段流程汇总 February 2025 至 May 2026 周期，并另注明 May 2026 实际 committed 8642，不能用该数替代分母。Findings 2478 与受邀 CL / TACL 论文不计入主会录取。采用正式主席序言，替代早期机构报道 2719 / 17669，不推断不同快照差异原因。",
+      "displayNote": "正式主席序言：2704 主会录取；分母含撤稿与 desk reject。",
       "sources": [
         {
-          "title": "广东外语外贸大学参会报告",
-          "url": "https://sist.gdufs.edu.cn/info/1606/12632.htm",
-          "kind": "institution"
-        },
-        {
-          "title": "KAIST AMI Lab 录取公告",
-          "url": "https://ami.kaist.ac.kr/3c4fdae6-c854-8000-8995-c8b5de4ac4db",
-          "kind": "institution"
+          "title": "官方程序主席序言 · PDF 第 8 页",
+          "url": "https://aclanthology.org/2026.emnlp-main.0.pdf#page=8",
+          "kind": "official"
         }
       ],
-      "verifiedAt": "2026-10-20"
+      "verifiedAt": "2026-11-18"
     },
     {
       "conference": "AAAI",
