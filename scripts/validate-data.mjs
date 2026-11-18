@@ -50,40 +50,27 @@ for(const file of ['index.html','styles.css','app.js','timeline.mjs','favicon.sv
 console.log(`Validated ${data.records.length} records, ${ids.size} conferences, ${data.window.start}–${data.window.end}. CSV is consistent.`);
 
 const deadlines=JSON.parse(readFileSync(path.join(root,'data/deadlines.json'),'utf8'));
-assert.equal(deadlines.schemaVersion,1);
-assert.match(deadlines.updatedAt,/^\d{4}-\d{2}-\d{2}$/);
-assert.equal(new Set(deadlines.editions).size,deadlines.editions.length);
-assert(deadlines.editions.includes(deadlines.defaultEdition));
-const deadlineKeys=new Set();
-function validateMoment(moment,key){
-  assert.match(moment.date,/^\d{4}-\d{2}-\d{2}$/);
-  assert.match(moment.deadlineAt,/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/);
-  assert(Number.isFinite(Date.parse(moment.deadlineAt)),`Invalid deadline ${key}`);
-  assert(moment.timeLabel.length>0,key);
-  const expectedDate=moment.timeLabel.includes('日终')?new Date(Date.parse(moment.date+'T00:00:00Z')+86400000).toISOString().slice(0,10):moment.date;
-  assert.equal(moment.deadlineAt.slice(0,10),expectedDate,`Calendar date mismatch ${key}`);
-}
-for(const row of deadlines.records){
-  const key=`${row.conference}-${row.year}`;
-  assert(ids.has(row.conference)&&deadlines.editions.includes(row.year),key);
-  assert(!deadlineKeys.has(key),`Duplicate deadline ${key}`);deadlineKeys.add(key);
-  assert(['announced','unannounced','not-held'].includes(row.status),key);
-  assert(row.note.length>15&&row.kind.length>0,key);
-  assert.match(row.verifiedAt,/^\d{4}-\d{2}-\d{2}$/);
-  assert(row.sources.length>0,key);
-  for(const source of row.sources){assert.equal(source.kind,'official',key);assert.equal(new URL(source.url).protocol,'https:',key);}
-  if(row.status==='announced'){
-    validateMoment(row,key);
-    assert([row.year-1,row.year].includes(Number(row.date.slice(0,4))),key);
-    if(row.prerequisite){
-      validateMoment(row.prerequisite,key);
-      assert(row.prerequisite.label.length>0,key);
-      assert(Date.parse(row.prerequisite.deadlineAt)<Date.parse(row.deadlineAt),`Prerequisite must precede paper deadline ${key}`);
-    }
-  }else{
-    assert.equal(row.date,null,key);assert.equal(row.deadlineAt,null,key);
-    if(row.status==='not-held')assert((row.conference==='ICCV'&&row.year%2===0)||(row.conference==='ECCV'&&row.year%2===1),key);
+assert.equal(deadlines.schemaVersion, 2);
+assert(Number.isInteger(deadlines.edition), 'Expected a single conference edition');
+assert.match(deadlines.updatedAt, /^\d{4}-\d{2}-\d{2}$/);
+const deadlineIds = new Set();
+for (const row of deadlines.records) {
+  const key = `${row.conference} ${deadlines.edition}`;
+  assert(ids.has(row.conference), key);
+  assert(!deadlineIds.has(row.conference), `Duplicate deadline for ${key}`);
+  deadlineIds.add(row.conference);
+  assert.equal(new URL(row.source).protocol, 'https:', key);
+  assert.match(row.date, /^\d{4}-\d{2}-\d{2}$/);
+  assert([deadlines.edition - 1, deadlines.edition].includes(Number(row.date.slice(0, 4))), key);
+  assert.match(row.deadlineAt, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/);
+  assert(Number.isFinite(Date.parse(row.deadlineAt)), `Invalid deadline ${key}`);
+  assert(row.timeLabel.length > 0, key);
+  const calendarDay = new Date(row.date + 'T00:00:00Z');
+  assert.equal(calendarDay.toISOString().slice(0, 10), row.date, key);
+  if (row.timeLabel.includes('日终')) {
+    calendarDay.setUTCDate(calendarDay.getUTCDate() + 1);
+    assert.equal(row.deadlineAt.slice(11, 19), '00:00:00', key);
   }
+  assert.equal(row.deadlineAt.slice(0, 10), calendarDay.toISOString().slice(0, 10), key);
 }
-for(const year of deadlines.editions)for(const id of ids)assert(deadlineKeys.has(`${id}-${year}`),`Missing deadline/status ${id} ${year}`);
-console.log(`Validated ${deadlines.records.length} official deadline/status entries; default edition ${deadlines.defaultEdition}.`);
+console.log(`Validated ${deadlineIds.size} full-paper deadlines for ${deadlines.edition}.`);

@@ -1,4 +1,4 @@
-import { renderDeadlineTimeline } from './timeline.mjs?v=deadlines-20261021';
+import { renderDeadlineTimeline } from './timeline.mjs?v=timeline-20261118';
 
 const $ = (id) => document.getElementById(id);
 const number = (n) => n.toLocaleString('en-US');
@@ -85,16 +85,14 @@ function renderFilters() {
 }
 function renderCharts(){hideTooltip();renderChart('rate-chart','rate');renderChart('count-chart','submissions');renderDeadlines();}
 function renderDeadlines(){
-  if(deadlines)renderDeadlineTimeline(deadlines,selected,Number($('deadline-year').value));
+  if(deadlines)renderDeadlineTimeline(deadlines,selected);
 }
 async function initDeadlines(){
   try{
-    const response=await fetch('./data/deadlines.json', { cache: 'no-cache' });
+    const response=await fetch('./data/deadlines.json?v=2', { cache: 'no-cache' });
     if(!response.ok)throw new Error('无法读取截止日期');
     deadlines=await response.json();
-    $('deadline-year').innerHTML=deadlines.editions.slice().sort((a,b)=>b-a).map(year=>`<option value="${year}">${year} 届</option>`).join('');
-    $('deadline-year').value=String(deadlines.defaultEdition);
-    $('deadline-year').addEventListener('change',renderDeadlines);
+    $('deadline-title').textContent = `投稿截止时间轴（${deadlines.edition} 届）`;
     renderDeadlines();
     setInterval(renderDeadlines,60000);
   }catch(error){$('deadline-timeline').innerHTML='<p class="deadline-empty">截止日期暂时无法载入，请稍后刷新。</p>';console.error(error);}
