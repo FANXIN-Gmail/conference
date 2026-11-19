@@ -134,7 +134,6 @@ async function init(){
       .map(row => ({ id: row.conference, color: '#247cba' }));
     conferenceFilters = [...dataset.conferences, ...deadlineOnly];
     selected = new Set(conferenceFilters.map(c => c.id));
-    $('year-range').textContent=`${years[0]}–${years.at(-1)}`;
     $('updated').textContent=`核验于 ${dataset.updatedAt.replaceAll('-','.')}`;
     $('table-conference').insertAdjacentHTML('beforeend',dataset.conferences.map(c=>`<option value="${c.id}">${c.id}</option>`).join(''));
     $('table-year').insertAdjacentHTML('beforeend',years.slice().reverse().map(y=>`<option value="${y}">${y}</option>`).join(''));
