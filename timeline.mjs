@@ -41,19 +41,21 @@ export function renderDeadlineTimeline(data, selected, now = Date.now()) {
     parts.push(`<line x1="${position}" x2="${position}" y1="${axisY + 7}" y2="${axisY + 12}" stroke="#dce3ea"/>
       <text class="axis-label" x="${position}" y="${axisY + 29}" text-anchor="middle">${label}</text>`);
   }
+  const links = [];
   for (const {record, actualX, labelX, lane} of points) {
     const state = Date.parse(record.deadlineAt) <= now ? 'closed' : 'upcoming';
     const color = COLORS[state];
     const labelY = axisY - 42 - lane * laneHeight;
     const deadline = escape(`${record.date} ${record.timeLabel}`);
-    parts.push(`<a class="deadline-link ${state}" href="${escape(record.source)}" target="_blank" rel="noopener noreferrer"
+    parts.push(`<path d="M ${actualX} ${axisY - 5} V ${labelY + 27} H ${labelX}" fill="none" stroke="${color}" opacity=".5"/>`);
+    links.push(`<a class="deadline-link ${state}" href="${escape(record.source)}" target="_blank" rel="noopener noreferrer"
         aria-label="${escape(record.conference)} ${data.edition}，${deadline}">
-      <path d="M ${actualX} ${axisY - 6} V ${labelY + 27} H ${labelX}" fill="none" stroke="${color}" opacity=".5"/>
-      <circle cx="${actualX}" cy="${axisY}" r="5" fill="white" stroke="${color}" stroke-width="2.5"/>
+      <rect x="${labelX - labelHalfWidth}" y="${labelY - 16}" width="${2 * labelHalfWidth}" height="39" fill="white"/>
+      <line class="deadline-marker" x1="${actualX}" x2="${actualX}" y1="${axisY - 5}" y2="${axisY + 5}" stroke="${color}" stroke-width="2" stroke-linecap="round"/>
       <text x="${labelX}" y="${labelY}" text-anchor="middle" fill="${color}" font-size="15" font-weight="600">${escape(record.conference)}</text>
       <text x="${labelX}" y="${labelY + 19}" text-anchor="middle" fill="${color}" font-size="13">${deadline}</text>
     </a>`);
   }
-  parts.push('</svg>');
+  parts.push(...links, '</svg>');
   container.innerHTML = parts.join('');
 }

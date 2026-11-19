@@ -6,7 +6,7 @@
 .deadline-scroll svg{display:block;width:100%;min-width:900px;height:auto}
 .deadline-link{outline-offset:3px}
 .deadline-link:hover text,.deadline-link:focus text{text-decoration:underline}
-.deadline-link:hover circle,.deadline-link:focus circle{stroke-width:4}
+.deadline-link:hover .deadline-marker,.deadline-link:focus .deadline-marker{stroke-width:3}
 .deadline-empty{font-size:14px;color:var(--muted);text-align:center;padding:26px 0;margin:0}
 @media(max-width:740px){.deadline-panel{margin-bottom:22px}}
 @media(max-width:1000px){.wrap{padding:0 28px}.filter{padding:6px 12px;font-size:11px}.chart-panel{padding:21px 17px 16px}}

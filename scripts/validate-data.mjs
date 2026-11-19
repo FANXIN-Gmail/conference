@@ -56,7 +56,7 @@ assert.match(deadlines.updatedAt, /^\d{4}-\d{2}-\d{2}$/);
 const deadlineIds = new Set();
 for (const row of deadlines.records) {
   const key = `${row.conference} ${deadlines.edition}`;
-  assert(ids.has(row.conference), key);
+  assert.match(row.conference, /^[A-Za-z][A-Za-z0-9-]*$/, key);
   assert(!deadlineIds.has(row.conference), `Duplicate deadline for ${key}`);
   deadlineIds.add(row.conference);
   assert.equal(new URL(row.source).protocol, 'https:', key);

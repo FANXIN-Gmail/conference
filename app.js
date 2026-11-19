@@ -1,11 +1,11 @@
-import { renderDeadlineTimeline } from './timeline.mjs?v=timeline-20261118';
+import { renderDeadlineTimeline } from './timeline.mjs?v=sigir-20261119';
 
 const $ = (id) => document.getElementById(id);
 const number = (n) => n.toLocaleString('en-US');
 const rate = (row) => 100 * row.accepted / row.submissions;
 const percent = (row) => `${rate(row).toFixed(1)}%`;
 const escape = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let dataset, deadlines, years, selected, focusYear;
+let dataset, deadlines, conferenceFilters, years, selected, focusYear;
 const tooltip = $('tooltip');
 
 function hideTooltip() { tooltip.hidden = true; }
@@ -37,7 +37,8 @@ function renderChart(id, metric) {
   }
   years.forEach(year => parts.push(`<text class="axis-label" x="${x(year)}" y="${H-13}" text-anchor="middle" ${year === focusYear ? 'style="fill:#142537;font-weight:600"' : ''}>${year}</text>`));
   const labels = [];
-  dataset.conferences.filter(c => selected.has(c.id)).forEach(c => {
+  const selectedSeries = dataset.conferences.filter(c => selected.has(c.id));
+  selectedSeries.forEach(c => {
     const rows = dataset.records.filter(r => r.conference === c.id).sort((a,b) => a.year-b.year);
     const points = rows.map(r => `${x(r.year)},${y(isRate ? rate(r) : r.submissions)}`).join(' ');
     parts.push(`<polyline points="${points}" fill="none" stroke="${c.color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>`);
@@ -59,7 +60,10 @@ function renderChart(id, metric) {
     const label = `${l.c.id}${l.row.year < years.at(-1) ? ` ’${String(l.row.year).slice(-2)}` : ''}`;
     parts.push(`<path d="M ${l.actualX+5} ${l.actual} L ${W-right+17} ${l.labelY} L ${W-right+21} ${l.labelY}" fill="none" stroke="${l.c.color}" stroke-width=".8" opacity=".6"/><text class="series-label" x="${W-right+25}" y="${l.labelY+3}" fill="${l.c.color}">${label} ${isRate ? percent(l.row) : number(l.row.submissions)}</text>`);
   });
-  if (!selected.size) parts.push(`<text x="${W/2}" y="${H/2}" text-anchor="middle" font-size="13" fill="#697787">请选择至少一个会议</text>`);
+  if (!selectedSeries.length) {
+    const message = selected.size ? '所选会议暂无统计数据' : '请选择至少一个会议';
+    parts.push(`<text x="${W/2}" y="${H/2}" text-anchor="middle" font-size="13" fill="#697787">${message}</text>`);
+  }
   parts.push('</svg>');
   $(id).innerHTML=parts.join('');
   $(id).querySelectorAll('.chart-point').forEach(point=>{
@@ -75,7 +79,7 @@ function renderChart(id, metric) {
 }
 
 function renderFilters() {
-  $('filters').innerHTML=dataset.conferences.map(c=>`<button class="filter" type="button" style="--series:${c.color}" aria-pressed="${selected.has(c.id)}" data-id="${c.id}"><span class="dot"></span>${c.id}</button>`).join('');
+  $('filters').innerHTML=conferenceFilters.map(c=>`<button class="filter" type="button" style="--series:${c.color}" aria-pressed="${selected.has(c.id)}" data-id="${escape(c.id)}"><span class="dot"></span>${escape(c.id)}</button>`).join('');
   $('filters').querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
     const id=button.dataset.id;
     selected.has(id)?selected.delete(id):selected.add(id);
@@ -87,14 +91,12 @@ function renderCharts(){hideTooltip();renderChart('rate-chart','rate');renderCha
 function renderDeadlines(){
   if(deadlines)renderDeadlineTimeline(deadlines,selected);
 }
-async function initDeadlines(){
+async function loadDeadlines(){
   try{
     const response=await fetch('./data/deadlines.json?v=2', { cache: 'no-cache' });
     if(!response.ok)throw new Error('无法读取截止日期');
     deadlines=await response.json();
     $('deadline-title').textContent = `投稿截止时间轴（${deadlines.edition} 届）`;
-    renderDeadlines();
-    setInterval(renderDeadlines,60000);
   }catch(error){$('deadline-timeline').innerHTML='<p class="deadline-empty">截止日期暂时无法载入，请稍后刷新。</p>';console.error(error);}
 }
 function selectYear(year){focusYear=year;renderCharts();}
@@ -118,17 +120,26 @@ function downloadCSV(){
 }
 async function init(){
   try{
-    const response=await fetch('./data/conferences.json', { cache: 'no-cache' });
+    const [response] = await Promise.all([
+      fetch('./data/conferences.json', { cache: 'no-cache' }),
+      loadDeadlines(),
+    ]);
     if(!response.ok)throw new Error('无法读取数据文件');
     dataset=await response.json();
     years=[...new Set(dataset.records.map(r=>r.year))].sort((a,b)=>a-b);
-    focusYear=years.at(-1);selected=new Set(dataset.conferences.map(c=>c.id));
+    focusYear=years.at(-1);
+    const statisticsIds = new Set(dataset.conferences.map(c => c.id));
+    const deadlineOnly = (deadlines?.records ?? [])
+      .filter(row => !statisticsIds.has(row.conference))
+      .map(row => ({ id: row.conference, color: '#247cba' }));
+    conferenceFilters = [...dataset.conferences, ...deadlineOnly];
+    selected = new Set(conferenceFilters.map(c => c.id));
     $('year-range').textContent=`${years[0]}–${years.at(-1)}`;
     $('updated').textContent=`核验于 ${dataset.updatedAt.replaceAll('-','.')}`;
     $('table-conference').insertAdjacentHTML('beforeend',dataset.conferences.map(c=>`<option value="${c.id}">${c.id}</option>`).join(''));
     $('table-year').insertAdjacentHTML('beforeend',years.slice().reverse().map(y=>`<option value="${y}">${y}</option>`).join(''));
     $('table-conference').addEventListener('change',renderTable);$('table-year').addEventListener('change',renderTable);
-    $('select-all').addEventListener('click',()=>{selected=new Set(dataset.conferences.map(c=>c.id));renderFilters();renderCharts();});
+    $('select-all').addEventListener('click',()=>{selected=new Set(conferenceFilters.map(c=>c.id));renderFilters();renderCharts();});
     $('clear-all').addEventListener('click',()=>{selected.clear();renderFilters();renderCharts();});
     $('download-csv').addEventListener('click',downloadCSV);
     document.addEventListener('keydown',event=>{if(event.key==='Escape')hideTooltip();});
@@ -136,7 +147,7 @@ async function init(){
     window.addEventListener('resize',()=>requestAnimationFrame(renderCharts));
     renderFilters();renderCharts();renderTable();
     $('loading').hidden=true;$('dashboard').hidden=false;
-    await initDeadlines();
+    if (deadlines) setInterval(renderDeadlines, 60000);
   }catch(error){$('loading').innerHTML='数据暂时无法载入。请刷新页面，或前往 <a href="https://github.com/FANXIN-Gmail/conference/tree/main/data">GitHub 查看原始数据 ↗</a>。';console.error(error);}
 }
 init();

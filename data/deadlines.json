@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "edition": 2027,
-  "updatedAt": "2026-11-18",
+  "updatedAt": "2026-11-19",
   "records": [
     {
       "conference": "AAAI",
@@ -37,6 +37,13 @@
       "deadlineAt": "2027-01-04T23:59:00-12:00",
       "timeLabel": "23:59 AoE",
       "source": "https://2027.aclweb.org/calls/main/"
+    },
+    {
+      "conference": "SIGIR",
+      "date": "2027-01-21",
+      "deadlineAt": "2027-01-22T00:00:00-12:00",
+      "timeLabel": "AoE 日终",
+      "source": "https://sigir2027.org/pages/submit-full.html"
     },
     {
       "conference": "ICML",
